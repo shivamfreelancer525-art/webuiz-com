@@ -15,7 +15,7 @@
         <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
             <div class="col-xl-7 col-lg-9 col-md-11">
                 <div class="section-title text-center mb-55">
-                    <span class="subtitle-one mb-20"><i class="fas fa-list"></i> What We Offer at Webuiz.com </span>
+                    <span class="subtitle-one mb-20"><i class="fas fa-list"></i> What We Offer at Draggify.com </span>
                     <h4>Explore our robust features designed to empower your website creation <span>journey</span> </h4>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="content">
                         <h5>Ad Landing Pages</h5>
-                        <p>Need a landing page for your marketing campaigns? Webuiz is designed to create
+                        <p>Need a landing page for your marketing campaigns? Draggify is designed to create
                             high-converting landing pages that capture leads and drive sales.</p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <div class="content">
                         <h5>Download Your Site</h5>
                         <p>Once you're done, you can download your website as a zip file and host it anywhere you like.
-                            With Webuiz, you own your site entirely.
+                            With Draggify, you own your site entirely.
                         </p>
                     </div>
                 </div>

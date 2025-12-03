@@ -45,7 +45,7 @@
                             <ul class="list">
                                 <li>1 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>1000 AI image & text tokens</li>
+                                <!-- <li>1000 AI image & text tokens</li> -->
                                 <li>100MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -58,7 +58,7 @@
                             <hr>
                             <div class="price"><span class="prev">$</span>0<span class="next">/month</span></div>
                             <div class="text">No credit card required</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <ul class="list">
                                 <li>5 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>5000 AI image & text tokens</li>
+                                <!-- <li>5000 AI image & text tokens</li> -->
                                 <li>500MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -83,7 +83,7 @@
                             <hr>
                             <div class="price"><span class="prev">$</span>15<span class="next">/month</span></div>
                             <div class="text">For Small Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <ul class="list">
                                 <li>Unlimited Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>Unlimited AI image & text tokens</li>
+                                <!-- <li>Unlimited AI image & text tokens</li> -->
                                 <li>5GB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -109,7 +109,7 @@
                             <hr>
                             <div class="price"><span class="prev">$</span>30<span class="next">/month</span></div>
                             <div class="text">For Large Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                             <ul class="list">
                                 <li>1 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>1000 AI image & text tokens</li>
+                                <!-- <li>1000 AI image & text tokens</li> -->
                                 <li>100MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -138,7 +138,7 @@
                             <hr>
                             <div class="price"><span class="prev">$</span>0<span class="next">/Year</span></div>
                             <div class="text">No credit card required</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                             <ul class="list">
                                 <li>5 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>5000 AI image & text tokens</li>
+                                <!-- <li>5000 AI image & text tokens</li> -->
                                 <li>500MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -165,7 +165,7 @@
                             <div class="price"><span class="prev">$</span>149<span class="next">/Year</span>
                             </div>
                             <div class="text">For Small Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                             <ul class="list">
                                 <li>Unlimited Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>Unlimited AI image & text tokens</li>
+                                <!-- <li>Unlimited AI image & text tokens</li> -->
                                 <li>5GB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -193,7 +193,7 @@
                             <div class="price"><span class="prev">$</span>329<span class="next">/Year</span>
                             </div>
                             <div class="text">For Large Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>

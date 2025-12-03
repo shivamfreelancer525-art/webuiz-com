@@ -29,7 +29,7 @@
                     <div class="section-title mb-30">
                         <h2>Who we are?</h2>
                     </div>
-                    <p>At Webuiz, we are dedicated to empowering businesses of all sizes to create a strong online
+                    <p>At Draggify, we are dedicated to empowering businesses of all sizes to create a strong online
                         presence effortlessly. Our innovative website builder is designed to be user-friendly, fast, and
                         highly customizable, allowing you to build stunning, responsive websites without the need for
                         coding.</p>
@@ -49,7 +49,7 @@
                                 <div class="text">We are committed to continuous improvement, ensuring that our
                                     platform
                                     stays at the forefront of technology and design trends. Whether you're a small
-                                    business or a large enterprise, Webuiz is here to help you achieve your online
+                                    business or a large enterprise, Draggify is here to help you achieve your online
                                     objectives with ease and efficiency.</div>
                             </div>
                         </div>

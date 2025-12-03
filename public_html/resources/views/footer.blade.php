@@ -10,8 +10,8 @@
                              <p>No credit card requirement it’s free for a month</p>
                          </div>
                          <div class="footer-btns">
-                             <a href="https://app.webuiz.com/" class="theme-btn style-three">Login</a>
-                             <a href="https://app.webuiz.com/register" class="theme-btn">Register <i
+                             <a href="https://app.draggify.com/" class="theme-btn style-three">Login</a>
+                             <a href="https://app.draggify.com/register" class="theme-btn">Register <i
                                      class="far fa-arrow-right"></i></a>
                          </div>
                      </div>
@@ -25,8 +25,8 @@
                              <li><a href="pricing">Pricing</a></li>
                              <li><a href="faq">FAQ</a></li>
                              <li><a href="features">Features</a></li>
-                             <li><a href="https://app.webuiz.com/">Login</a></li>
-                             <li><a href="https://app.webuiz.com/register">Register</a></li>
+                             <li><a href="https://app.draggify.com/">Login</a></li>
+                             <li><a href="https://app.draggify.com/register">Register</a></li>
                          </ul>
                      </div>
                  </div>
@@ -52,7 +52,7 @@
                  <div class="col-xl-4 col-lg-6">
                      <div class="copyright-text pt-10 text-lg-start text-center" data-aos="fade-left"
                          data-aos-duration="1500" data-aos-offset="50">
-                         <p>Copyright © 2024, Webuiz.com. All Rights Reserved.</p>
+                         <p>Copyright © 2024, Draggify.com. All Rights Reserved.</p>
                      </div>
                  </div>
                  <div class="col-xl-8 col-lg-6">

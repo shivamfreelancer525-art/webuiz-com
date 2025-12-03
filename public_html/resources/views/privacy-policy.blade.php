@@ -43,7 +43,7 @@
             <li>
                 <p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;,
                     &quot;Us&quot;
-                    or &quot;Our&quot; in this Agreement) refers to Webuiz.</p>
+                    or &quot;Our&quot; in this Agreement) refers to Draggify.</p>
             </li>
             <li>
                 <p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other
@@ -80,8 +80,8 @@
                     Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
             </li>
             <li>
-                <p><strong>Website</strong> refers to Webuiz, accessible from <a href="https://webuiz.com/"
-                        rel="external nofollow noopener" target="_blank">https://webuiz.com/</a></p>
+                <p><strong>Website</strong> refers to Draggify, accessible from <a href="https://draggify.com/"
+                        rel="external nofollow noopener" target="_blank">https://draggify.com/</a></p>
             </li>
             <li>
                 <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other
@@ -348,7 +348,7 @@
         <h4>Contact Us</h4>
         <p>If you have any questions about this Privacy Policy, You can contact us:</p>
         <ul>
-            <li>email: contact@webuiz.com</li>
+            <li>email: contact@draggify.com</li>
         </ul>
     </div>
 </section>

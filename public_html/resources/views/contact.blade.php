@@ -40,7 +40,7 @@
                         <div class="content">
                             <span class="title">Email Address</span>
                             <span class="text">
-                                <a href="mailto:contact@webuiz.com">contact@webuiz.com</a>
+                                <a href="mailto:contact@draggify.com">contact@draggify.com</a>
                             </span>
                         </div>
                     </div>

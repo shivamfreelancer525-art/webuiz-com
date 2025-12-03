@@ -32,12 +32,12 @@
         <p>For the purposes of this Cookies Policy:</p>
         <ul>
             <li><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot;
-                or &quot;Our&quot; in this Cookies Policy) refers to webuiz.</li>
+                or &quot;Our&quot; in this Cookies Policy) refers to draggify.</li>
             <li><strong>Cookies</strong> means small files that are placed on Your computer, mobile device or any other
                 device by a website, containing details of your browsing history on that website among its many uses.
             </li>
-            <li><strong>Website</strong> refers to webuiz, accessible from <a href="https://webuiz.com/"
-                    rel="external nofollow noopener" target="_blank">https://webuiz.com/</a></li>
+            <li><strong>Website</strong> refers to draggify, accessible from <a href="https://draggify.com/"
+                    rel="external nofollow noopener" target="_blank">https://draggify.com/</a></li>
             <li><strong>You</strong> means the individual accessing or using the Website, or a company, or any legal
                 entity on behalf of which such individual is accessing or using the Website, as applicable.</li>
         </ul>
@@ -106,7 +106,7 @@
         <h4>Contact Us</h4>
         <p>If you have any questions about this Cookies Policy, You can contact us:</p>
         <ul>
-            <li>By email: contact@webuiz.com</li>
+            <li>By email: contact@draggify.com</li>
         </ul>
     </div>
 </section>

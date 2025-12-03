@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->index('first_name');
-            $table->index('last_name');
+            if (Schema::hasColumn('users', 'first_name')) {
+                $table->index('first_name');
+            }
+            if (Schema::hasColumn('users', 'last_name')) {
+                $table->index('last_name');
+            }
         });
     }
 

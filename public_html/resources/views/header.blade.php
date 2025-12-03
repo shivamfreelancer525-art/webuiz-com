@@ -5,23 +5,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Webuiz.com - @yield('title')</title>
+    <title>Draggify.com - @yield('title')</title>
     <meta name="description"
-        content="Build professional websites easily with Webuiz.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
-    <meta name="keywords" content="Webuiz, Website Builder, Best Website Builder, Drag-and-Drop Website Builder, Website Creator, Responsive Website Builder, SEO-Friendly Website Builder, Easy Website Builder, Website Design Tool, Customizable Website Builder, Landing Page Builder, No-Code Website Builder, Web Design Platform, Fast Website Builder, User-Friendly Website Builder, Mobile-Friendly Website Builder, Website Builder Software">
-    <meta name="author" content="webuiz.com">
-    <meta property="og:title" content="webuiz.com - Build Professional Websites Easily">
+        content="Build professional websites easily with Draggify.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
+    <meta name="keywords" content="Draggify, Website Builder, Best Website Builder, Drag-and-Drop Website Builder, Website Creator, Responsive Website Builder, SEO-Friendly Website Builder, Easy Website Builder, Website Design Tool, Customizable Website Builder, Landing Page Builder, No-Code Website Builder, Web Design Platform, Fast Website Builder, User-Friendly Website Builder, Mobile-Friendly Website Builder, Website Builder Software">
+    <meta name="author" content="draggify.com">
+    <meta property="og:title" content="draggify.com - Build Professional Websites Easily">
     <meta property="og:description"
-        content="Build professional websites easily with Webuiz.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
-    <meta property="og:image" content="https://www.webuiz.com/assets/images/logos/logo-dark.png">
-    <meta property="og:url" content="https://www.webuiz.com">
+        content="Build professional websites easily with Draggify.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
+    <meta property="og:image" content="https://www.draggify.com/assets/images/logos/logo-dark.png">
+    <meta property="og:url" content="https://www.draggify.com">
     <meta property="og:type" content="website">
-    <meta name="twitter:title" content="Webuiz.com - Build Professional Websites Easily">
+    <meta name="twitter:title" content="Draggify.com - Build Professional Websites Easily">
     <meta name="twitter:description"
-        content="Build professional websites easily with Webuiz.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
-    <meta name="twitter:image" content="https://www.webuiz.com/assets/images/logos/logo-dark.png">
-    <meta name="twitter:card" content="https://www.webuiz.com/assets/images/hero/hero-three-bg.png">
-    <link rel="canonical" href="https://www.webuiz.com">
+        content="Build professional websites easily with Draggify.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
+    <meta name="twitter:image" content="https://www.draggify.com/assets/images/logos/logo-dark.png">
+    <meta name="twitter:card" content="https://www.draggify.com/assets/images/hero/hero-three-bg.png">
+    <link rel="canonical" href="https://www.draggify.com">
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-io/favicon-32x32.png">
@@ -93,8 +93,8 @@
                             </nav>
                         </div>
                         <div class="menu-btns ms-lg-auto">
-                            <a href="https://app.webuiz.com/" class="light-btn">Log in</a>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Register <i
+                            <a href="https://app.draggify.com/" class="light-btn">Log in</a>
+                            <a href="https://app.draggify.com/register" class="theme-btn">Register <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>

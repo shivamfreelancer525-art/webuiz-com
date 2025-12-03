@@ -10,13 +10,13 @@
             <div class="col-lg-6">
                 <div class="hero-content style-three rmb-55" data-aos="fade-left" data-aos-duration="1500"
                     data-aos-offset="50">
-                    <span class="subtitle-one mb-20">Welcome to Webuiz</span>
+                    <span class="subtitle-one mb-20">Welcome to Draggify</span>
                     <h1>The Ultimate <span>Website Builder</span></h1>
-                    <p>Create your own stunning website with Webuiz, the easiest and fastest way to build a
+                    <p>Create your own stunning website with Draggify, the easiest and fastest way to build a
                         professional online presence. Whether you're a seasoned coder or just starting out, our
                         intuitive drag-and-drop interface empowers you to design your website effortlessly. No coding
                         required.</p>
-                    <a href="https://app.webuiz.com/register" class="theme-btn mt-15 mb-10">Start your free
+                    <a href="https://app.draggify.com/register" class="theme-btn mt-15 mb-10">Start your free
                         trial <i class="far fa-arrow-right"></i></a>
                     <ul class="icon-list style-two">
                         <li><i class="fal fa-check"></i> One month free trial</li>
@@ -37,7 +37,7 @@
         <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
             <div class="col-xl-7 col-lg-9 col-md-11">
                 <div class="section-title text-center mb-55">
-                    <span class="subtitle-one mb-20"><i class="fas fa-list"></i> What We Offer at Webuiz.com </span>
+                    <span class="subtitle-one mb-20"><i class="fas fa-list"></i> What We Offer at Draggify.com </span>
                     <h4>Explore our robust features designed to empower your website creation <span>journey</span> </h4>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="content">
                         <h5>Ad Landing Pages</h5>
-                        <p>Need a landing page for your marketing campaigns? Webuiz is designed to create
+                        <p>Need a landing page for your marketing campaigns? Draggify is designed to create
                             high-converting landing pages that capture leads and drive sales.</p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     <div class="content">
                         <h5>Download Your Site</h5>
                         <p>Once you're done, you can download your website as a zip file and host it anywhere you like.
-                            With Webuiz, you own your site entirely.
+                            With Draggify, you own your site entirely.
 
                         </p>
                     </div>
@@ -163,7 +163,7 @@
                             <ul class="list">
                                 <li>1 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>1000 AI image & text tokens</li>
+                                <!-- <li>1000 AI image & text tokens</li> -->
                                 <li>100MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -177,7 +177,7 @@
                             <div class="price"><span class="prev">$</span>0<span class="next">/month</span>
                             </div>
                             <div class="text">No credit card required</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                             <ul class="list">
                                 <li>5 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>5000 AI image & text tokens</li>
+                                <!-- <li>5000 AI image & text tokens</li> -->
                                 <li>500MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -204,7 +204,7 @@
                             <div class="price"><span class="prev">$</span>15<span class="next">/month</span>
                             </div>
                             <div class="text">For Small Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                             <ul class="list">
                                 <li>Unlimited Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>Unlimited AI image & text tokens</li>
+                                <!-- <li>Unlimited AI image & text tokens</li> -->
                                 <li>5GB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -232,7 +232,7 @@
                             <div class="price"><span class="prev">$</span>30<span class="next">/month</span>
                             </div>
                             <div class="text">For Large Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                             <ul class="list">
                                 <li>1 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>1000 AI image & text tokens</li>
+                                <!-- <li>1000 AI image & text tokens</li> -->
                                 <li>100MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -262,7 +262,7 @@
                             <hr>
                             <div class="price"><span class="prev">$</span>0<span class="next">/Year</span></div>
                             <div class="text">No credit card required</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -275,7 +275,7 @@
                             <ul class="list">
                                 <li>5 Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>5000 AI image & text tokens</li>
+                                <!-- <li>5000 AI image & text tokens</li> -->
                                 <li>500MB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -289,7 +289,7 @@
                             <div class="price"><span class="prev">$</span>149<span class="next">/Year</span>
                             </div>
                             <div class="text">For Small Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
                             <ul class="list">
                                 <li>Unlimited Website</li>
                                 <li>Drag & Drop Builder</li>
-                                <li>Unlimited AI image & text tokens</li>
+                                <!-- <li>Unlimited AI image & text tokens</li> -->
                                 <li>5GB Storage</li>
                                 <li>Workspaces</li>
                                 <li>Custom code</li>
@@ -317,7 +317,7 @@
                             <div class="price"><span class="prev">$</span>329<span class="next">/Year</span>
                             </div>
                             <div class="text">For Large Businesses</div>
-                            <a href="https://app.webuiz.com/register" class="theme-btn">Choose Package <i
+                            <a href="https://app.draggify.com/register" class="theme-btn">Choose Package <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -370,7 +370,7 @@
                     data-aos-offset="50">
                     <span class="subtitle-one mb-20"><i class="fas fa-globe-americas"></i> Build Your Perfect
                         Website</span>
-                    <h4>Unlock the Power of Easy Website Creation with <span>Webuiz</span></h4>
+                    <h4>Unlock the Power of Easy Website Creation with <span>Draggify</span></h4>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                             <img src="assets/images/testimonials/testimonial-author51.png" alt="Author">
                         </div>
                         <div class="content">
-                            <div class="author-text fs-5">"Webuiz.com has completely transformed the way I build
+                            <div class="author-text fs-5">"Draggify.com has completely transformed the way I build
                                 websites.
                                 The drag & drop builder is incredibly intuitive, and the AI-powered tools save me so
                                 much time. Highly recommended!"</div>
@@ -460,7 +460,7 @@
                             <img src="assets/images/testimonials/testimonial-author52.png" alt="Author">
                         </div>
                         <div class="content">
-                            <div class="author-text fs-5">"The performance and speed of Webuiz.com are top-notch. My
+                            <div class="author-text fs-5">"The performance and speed of Draggify.com are top-notch. My
                                 websites load quickly, and the platform itself is very reliable. The ability to download
                                 my projects in HTML, CSS, and JavaScript is a huge plus."</div>
                             <div class="author-description">
@@ -477,7 +477,7 @@
                             <img src="assets/images/testimonials/testimonial-author53.png" alt="Author">
                         </div>
                         <div class="content">
-                            <div class="author-text fs-5">"Webuiz.com offers great flexibility with its custom code
+                            <div class="author-text fs-5">"Draggify.com offers great flexibility with its custom code
                                 options.
                                 As a developer, I appreciate being able to dive into the code when needed. My only wish
                                 is for more AI image tokens in the Advance Plan."</div>
@@ -495,7 +495,7 @@
                             <img src="assets/images/testimonials/testimonial-author54.png" alt="Author">
                         </div>
                         <div class="content">
-                            <div class="author-text fs-5">"The live editing feature on Webuiz.com is fantastic. I can
+                            <div class="author-text fs-5">"The live editing feature on Draggify.com is fantastic. I can
                                 make
                                 changes in real-time and see the results immediately. Plus, the support team is very
                                 responsive and helpful."</div>
@@ -514,7 +514,7 @@
                         </div>
                         <div class="content">
                             <div class="author-text fs-5">"I love the templates and customization options available on
-                                Webuiz.com. The platform is user-friendly, even for someone like me with minimal
+                                Draggify.com. The platform is user-friendly, even for someone like me with minimal
                                 technical skills. The only downside is that the free plan has limited storage."</div>
                             <div class="author-description">
                                 <div class="icon"><i class="flaticon-double-quotes"></i></div>
@@ -564,7 +564,7 @@
                         <span class="subtitle-one mb-20"><i class="fas fa-question-circle"></i> FAQs</span>
                         <h2>Frequently Asked Questions</h2>
                     </div>
-                    <p>Find answers to the most commonly asked questions about Webuiz.com and learn how to make the
+                    <p>Find answers to the most commonly asked questions about Draggify.com and learn how to make the
                         most of our website builder.
                     </p>
                 </div>
@@ -576,13 +576,13 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne1">
-                                What is Webuiz.com?
+                                What is Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne1" class="accordion-collapse collapse show"
                             data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>Webuiz.com is a powerful website builder that empowers users to create professional
+                                <p>Draggify.com is a powerful website builder that empowers users to create professional
                                     websites with ease. It features AI-powered content generation, intuitive drag & drop
                                     editing, customizable templates, and seamless publishing options.
                                 </p>
@@ -625,7 +625,7 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne4">
-                                How many websites can I create with Webuiz.com?
+                                How many websites can I create with Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne4" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
@@ -656,7 +656,7 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne6">
-                                Can I use custom domains with Webuiz.com?
+                                Can I use custom domains with Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne6" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
@@ -677,7 +677,7 @@
                         </h5>
                         <div id="collapseOne7" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>Yes, with Webuiz.com, you can download your entire website project in HTML, CSS, and
+                                <p>Yes, with Draggify.com, you can download your entire website project in HTML, CSS, and
                                     JavaScript. This feature is available in our Advance and Premium plans, allowing you
                                     to export your website's code for further customization or for hosting on your own
                                     server.
@@ -704,12 +704,12 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne9">
-                                Do I need coding skills to use Webuiz.com?
+                                Do I need coding skills to use Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne9" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>No coding skills are required to use Webuiz.com. Our intuitive drag & drop builder
+                                <p>No coding skills are required to use Draggify.com. Our intuitive drag & drop builder
                                     and visual editors allow you to create and customize your website easily without any
                                     coding knowledge. For advanced users, our platform also offers the option to edit
                                     CSS and JavaScript manually.

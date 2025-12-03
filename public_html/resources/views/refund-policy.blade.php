@@ -15,7 +15,7 @@
     <div class="container">
         <p>Last updated: August 10, 2024</p>
 
-        <p>Thank you for choosing <strong>Webuiz</strong>. Please read this Refund Policy carefully as it sets out
+        <p>Thank you for choosing <strong>Draggify</strong>. Please read this Refund Policy carefully as it sets out
             important information about your rights and obligations regarding payments made on our platform.</p>
 
         <h4>No Refunds</h4>
@@ -34,7 +34,7 @@
         <h4>Contact Us</h4>
         <p>If you have any questions regarding this Refund Policy, you may contact us:</p>
         <ul>
-            <li>By email: contact@webuiz.com</li>
+            <li>By email: contact@draggify.com</li>
         </ul>
     </div>
 </section>

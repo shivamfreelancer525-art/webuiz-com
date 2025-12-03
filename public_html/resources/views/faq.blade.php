@@ -20,7 +20,7 @@
                         <span class="subtitle-one mb-20"><i class="fas fa-question-circle"></i> FAQs</span>
                         <h2>Frequently Asked Questions</h2>
                     </div>
-                    <p>Find answers to the most commonly asked questions about Webuiz.com and learn how to make the
+                    <p>Find answers to the most commonly asked questions about Draggify.com and learn how to make the
                         most of our website builder.
                     </p>
                 </div>
@@ -31,12 +31,12 @@
                     <div class="accordion-item">
                         <h5 class="accordion-header">
                             <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne1">
-                                What is Webuiz.com?
+                                What is Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne1" class="accordion-collapse collapse show" data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>Webuiz.com is a powerful website builder that empowers users to create professional
+                                <p>Draggify.com is a powerful website builder that empowers users to create professional
                                     websites with ease. It features AI-powered content generation, intuitive drag & drop
                                     editing, customizable templates, and seamless publishing options.
                                 </p>
@@ -78,7 +78,7 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne4">
-                                How many websites can I create with Webuiz.com?
+                                How many websites can I create with Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne4" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
@@ -109,7 +109,7 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne6">
-                                Can I use custom domains with Webuiz.com?
+                                Can I use custom domains with Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne6" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
@@ -130,7 +130,7 @@
                         </h5>
                         <div id="collapseOne7" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>Yes, with Webuiz.com, you can download your entire website project in HTML, CSS, and
+                                <p>Yes, with Draggify.com, you can download your entire website project in HTML, CSS, and
                                     JavaScript. This feature is available in our Advance and Premium plans, allowing you
                                     to export your website's code for further customization or for hosting on your own
                                     server.
@@ -157,12 +157,12 @@
                         <h5 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne9">
-                                Do I need coding skills to use Webuiz.com?
+                                Do I need coding skills to use Draggify.com?
                             </button>
                         </h5>
                         <div id="collapseOne9" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
                             <div class="accordion-body">
-                                <p>No coding skills are required to use Webuiz.com. Our intuitive drag & drop builder
+                                <p>No coding skills are required to use Draggify.com. Our intuitive drag & drop builder
                                     and visual editors allow you to create and customize your website easily without any
                                     coding knowledge. For advanced users, our platform also offers the option to edit
                                     CSS and JavaScript manually.

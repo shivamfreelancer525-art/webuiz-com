@@ -29,7 +29,7 @@ class DemoProductSeeder extends Seeder
             'feature_list' => [
                 '2 Sites',
                 'Drag & Drop Builder',
-                '1000 AI image & text tokens',
+                // '1000 AI image & text tokens',
                 '500MB Storage',
                 'Workspaces',
                 'Custom code',
@@ -142,7 +142,7 @@ class DemoProductSeeder extends Seeder
             'feature_list' => [
                 '10 Sites',
                 'Drag & Drop Builder',
-                'Unlimited AI image & text tokens',
+                // 'Unlimited AI image & text tokens',
                 '10GB Storage',
                 'Custom code',
                 'Workspaces',

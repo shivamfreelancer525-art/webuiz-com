@@ -27,7 +27,7 @@ class FormController extends Controller
     
         try {
          
-            Mail::to('contact@app.webuiz.com')->send(new ContactFormMail($request->all()));
+            Mail::to('contact@app.draggify.com')->send(new ContactFormMail($request->all()));
             return redirect()->back()->with('success', 'Your message has been sent successfully!');
 
         } catch (\Exception $e) {           
