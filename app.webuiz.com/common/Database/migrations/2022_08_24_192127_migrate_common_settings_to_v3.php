@@ -620,11 +620,11 @@ return new class extends Migration {
         $isSvg = file_exists(public_path('images/logo-light.svg'));
 
         Setting::where('name', 'branding.logo_dark')
-            ->where('value', 'client/assets/images/logo-dark.png')
+            ->where('value', 'client/assets/images/draggify_black.png')
             ->update([
                 'value' => $isSvg
-                    ? 'images/logo-dark.svg'
-                    : 'images/logo-dark.png',
+                    ? 'images/draggify_black.svg'
+                    : 'images/draggify_black.png',
             ]);
 
         Setting::where('name', 'branding.logo_light')

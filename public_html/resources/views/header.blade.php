@@ -13,13 +13,13 @@
     <meta property="og:title" content="draggify.com - Build Professional Websites Easily">
     <meta property="og:description"
         content="Build professional websites easily with Draggify.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
-    <meta property="og:image" content="https://www.draggify.com/assets/images/logos/logo-dark.png">
+    <meta property="og:image" content="https://www.draggify.com/assets/images/logos/draggify_black.png">
     <meta property="og:url" content="https://www.draggify.com">
     <meta property="og:type" content="website">
     <meta name="twitter:title" content="Draggify.com - Build Professional Websites Easily">
     <meta name="twitter:description"
         content="Build professional websites easily with Draggify.com. Our platform offers AI-powered tools, intuitive drag-and-drop builder, and responsive design for optimal performance. Start your website creation journey today!">
-    <meta name="twitter:image" content="https://www.draggify.com/assets/images/logos/logo-dark.png">
+    <meta name="twitter:image" content="https://www.draggify.com/assets/images/logos/draggify_black.png">
     <meta name="twitter:card" content="https://www.draggify.com/assets/images/hero/hero-three-bg.png">
     <link rel="canonical" href="https://www.draggify.com">
 
@@ -63,15 +63,15 @@
                 <div class="container container-1520 clearfix">
                     <div class="header-inner py-20 rpy-10 rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="/"><img src="assets/images/logos/logo-dark.png"
-                                        alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="/"><img src="assets/images/logos/draggify_black.png"
+                                        alt="Logo" title="Logo" class="logo" style="width:180px;"></a></div>
                         </div>
                         <div class="nav-outer ms-lg-auto clearfix">
                             <nav class="main-menu navbar-expand-lg">
                                 <div class="navbar-header py-10">
                                     <div class="mobile-logo">
                                         <a href="/">
-                                            <img src="assets/images/logos/logo-dark.png" alt="Logo" title="Logo">
+                                            <img src="assets/images/logos/draggify_black.png" alt="Logo" title="Logo"  style="width:80px; height:80px;">
                                         </a>
                                     </div>
                                     <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
@@ -93,8 +93,8 @@
                             </nav>
                         </div>
                         <div class="menu-btns ms-lg-auto">
-                            <a href="https://app.draggify.com/" class="light-btn">Log in</a>
-                            <a href="https://app.draggify.com/register" class="theme-btn">Register <i
+                            <a href="http://localhost:8000/login" class="light-btn">Log in</a>
+                            <a href="http://localhost:8000/register" class="theme-btn">Register <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>

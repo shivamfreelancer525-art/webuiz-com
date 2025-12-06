@@ -19,9 +19,12 @@ function basePath(): Plugin {
 
 export default defineConfig({
   server: {
-    host: '0.0.0.0',
+    host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost',
+    ...(process.env.NODE_ENV !== 'production' && {
+      origin: 'http://localhost:5173',
+    }),
     hmr: {
-      host: '0.0.0.0',
+      host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost',
     },
   },
   base: '',

@@ -21,7 +21,24 @@ interface ContentProps {
 }
 export function LandingPage() {
   const settings = useSettings();
-  const homepage = settings.homepage as {appearance: LandingPageContent};
+  const homepage = settings.homepage as {appearance: LandingPageContent} | undefined;
+
+  if (!homepage?.appearance) {
+    return (
+      <Fragment>
+        <DefaultMetaTags />
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-semibold">Landing page not configured</h1>
+            <p className="mt-4 text-muted">
+              Please configure the homepage appearance in admin settings.
+            </p>
+          </div>
+        </div>
+        <Footer className="landing-container" />
+      </Fragment>
+    );
+  }
 
   const showPricing =
     homepage.appearance.showPricing && settings.billing.enable;

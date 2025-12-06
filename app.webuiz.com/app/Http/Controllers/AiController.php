@@ -11,12 +11,23 @@ use OpenAI;
 
 class AiController extends BaseController
 {
-    protected OpenAI\Client $client;
+    protected ?OpenAI\Client $client = null;
 
     public function __construct()
     {
         $this->middleware('auth');
-        $this->client = OpenAI::client(config('services.openai.api_key'));
+    }
+
+    protected function getClient(): OpenAI\Client
+    {
+        if ($this->client === null) {
+            $apiKey = config('services.openai.api_key');
+            if (empty($apiKey)) {
+                throw new \RuntimeException('OpenAI API key is not configured. Please set OPENAI_API_KEY in your .env file.');
+            }
+            $this->client = OpenAI::client($apiKey);
+        }
+        return $this->client;
     }
 
     public function modifyText()
@@ -73,7 +84,7 @@ class AiController extends BaseController
 
         $prompt = "{$instruction} {$data['text']}";
 
-        $apiResponse = $this->client->chat()->create([
+        $apiResponse = $this->getClient()->chat()->create([
             'model' => 'gpt-3.5-turbo',
             'temperature' => 1,
             'messages' => [
@@ -114,7 +125,7 @@ class AiController extends BaseController
             'prompt' => 'required|string|min:10|max:3000',
         ]);
 
-        $apiResponse = $this->client->chat()->create([
+        $apiResponse = $this->getClient()->chat()->create([
             'model' => 'gpt-3.5-turbo',
             'temperature' => 1.5,
             'max_tokens' => 3000,
@@ -167,7 +178,7 @@ class AiController extends BaseController
             ? "Generate a $style {$data['prompt']}"
             : $data['prompt'];
 
-        $apiResponse = $this->client->images()->create([
+        $apiResponse = $this->getClient()->images()->create([
             'model' => 'dall-e-3',
             'prompt' => $prompt,
             'n' => 1,

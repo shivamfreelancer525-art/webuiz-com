@@ -25,11 +25,11 @@ return [
     // logos
     [
         'name' => 'branding.logo_dark',
-        'value' => 'images/logo-dark.svg',
+        'value' => 'images/draggify_black.png',
     ],
     [
         'name' => 'branding.logo_light',
-        'value' => 'images/logo-light.svg',
+        'value' => 'images/draggify_black.png',
     ],
 
     // translations

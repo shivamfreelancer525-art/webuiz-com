@@ -46,7 +46,8 @@ export function EmailVerificationPage() {
           <img
             src={logoSrc}
             alt="Site logo"
-            className="mx-auto mb-44 block h-42 w-auto"
+            className="mx-auto mb-44 block w-auto"
+            style={{height: '60px'}}
           />
         )}
         <div className="text-center">

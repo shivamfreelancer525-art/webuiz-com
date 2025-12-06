@@ -129,6 +129,7 @@ class Oauth
             $img = str_replace('http://', 'https://', $profile->avatar);
             $user = (new CreateUser())->execute([
                 'email' => $profile->email,
+                'name' => $profile->name ?? $profile->email,
                 'avatar' => $img,
                 'email_verified_at' => now(),
             ]);

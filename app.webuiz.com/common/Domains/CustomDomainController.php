@@ -6,6 +6,7 @@ use Arr;
 use Auth;
 use Common\Core\AppUrl;
 use Common\Core\BaseController;
+use Common\Core\Exceptions\AccessResponseWithAction;
 use Common\Database\Datasource\Datasource;
 use Common\Domains\Actions\DeleteCustomDomains;
 use Common\Domains\Validation\HostIsNotBlacklisted;
@@ -13,6 +14,7 @@ use Exception;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
 
@@ -43,7 +45,51 @@ class CustomDomainController extends BaseController
 
     public function store()
     {
-        $this->authorize('store', get_class($this->customDomain));
+        $user = Auth::user();
+        
+        // First check: Validate custom domain limit based on user's website/project limit
+        $maxWebsites = $user->getRestrictionValue('projects.create', 'count');
+        $currentDomains = $user->customDomains()->count();
+        
+        // If user has a website limit, enforce custom domain limit to match
+        if ($maxWebsites !== null) {
+            if ($currentDomains >= $maxWebsites) {
+                $billingEnabled = settings('billing.enable');
+                $upgradeAction = $billingEnabled 
+                    ? ['label' => __('Upgrade'), 'action' => '/pricing']
+                    : null;
+                
+                return $this->error(
+                    __('You have reached the maximum number of custom domains allowed for your plan. Your plan allows :count website(s), so you can add up to :domainCount custom domain(s). Please upgrade your plan to add more custom domains.', [
+                        'count' => $maxWebsites,
+                        'domainCount' => $maxWebsites,
+                    ]),
+                    [],
+                    403,
+                    $upgradeAction ? ['action' => $upgradeAction] : []
+                );
+            }
+        }
+        
+        // Second check: Standard authorization (this will enforce plan-based restrictions from custom_domains.create permission)
+        $response = Gate::inspect('store', get_class($this->customDomain));
+        
+        // If authorization failed, return appropriate error
+        if (!$response->allowed()) {
+            $message = $response->message() ?? __('Unable to add more custom domains. Please upgrade your plan.');
+            
+            // If it's a quota exceeded error, include upgrade action
+            if ($response instanceof AccessResponseWithAction) {
+                return $this->error(
+                    $message,
+                    [],
+                    403,
+                    ['action' => $response->action]
+                );
+            }
+            
+            return $this->error($message, [], 403);
+        }
 
         $this->validate($this->request, [
             'host' => [
@@ -104,7 +150,49 @@ class CustomDomainController extends BaseController
 
     public function authorizeCrupdate()
     {
-        $this->authorize('store', get_class($this->customDomain));
+        $user = Auth::user();
+        
+        // First check: Validate custom domain limit based on user's website/project limit
+        $maxWebsites = $user->getRestrictionValue('projects.create', 'count');
+        $currentDomains = $user->customDomains()->count();
+        
+        // If user has a website limit, enforce custom domain limit to match
+        if ($maxWebsites !== null) {
+            if ($currentDomains >= $maxWebsites) {
+                $billingEnabled = settings('billing.enable');
+                $upgradeAction = $billingEnabled 
+                    ? ['label' => __('Upgrade'), 'action' => '/pricing']
+                    : null;
+                
+                return $this->error(
+                    __('You have reached the maximum number of custom domains allowed for your plan. Your plan allows :count website(s), so you can add up to :domainCount custom domain(s). Please upgrade your plan to add more custom domains.', [
+                        'count' => $maxWebsites,
+                        'domainCount' => $maxWebsites,
+                    ]),
+                    [],
+                    403,
+                    $upgradeAction ? ['action' => $upgradeAction] : []
+                );
+            }
+        }
+        
+        // Check authorization
+        $response = Gate::inspect('store', get_class($this->customDomain));
+        
+        if (!$response->allowed()) {
+            $message = $response->message() ?? __('Unable to add more custom domains. Please upgrade your plan.');
+            
+            if ($response instanceof AccessResponseWithAction) {
+                return $this->error(
+                    $message,
+                    [],
+                    403,
+                    ['action' => $response->action]
+                );
+            }
+            
+            return $this->error($message, [], 403);
+        }
 
         $domainId = $this->request->get('domainId');
 
@@ -142,6 +230,20 @@ class CustomDomainController extends BaseController
         $this->validate($this->request, [
             'host' => ['required', 'string', new HostIsNotBlacklisted()],
         ]);
+
+        // Skip DNS validation in local/development environment for testing
+        $isLocal = app()->environment(['local', 'development']) || 
+                   config('app.env') === 'local' ||
+                   str_contains(request()->getHost(), 'localhost') ||
+                   str_contains(request()->getHost(), '127.0.0.1');
+        
+        if ($isLocal) {
+            // In local environment, skip DNS checks and return success
+            return $this->success([
+                'result' => 'connected',
+                'skipDnsCheck' => true,
+            ]);
+        }
 
         $failReason = '';
 

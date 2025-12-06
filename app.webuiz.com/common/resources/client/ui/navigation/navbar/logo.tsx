@@ -3,6 +3,7 @@ import {useSettings} from '@common/core/settings/use-settings';
 import {Link} from 'react-router-dom';
 import {NavbarProps} from '@common/ui/navigation/navbar/navbar';
 import clsx from 'clsx';
+import {getAssetUrl} from '@common/utils/urls/get-asset-url';
 
 interface LogoProps {
   color?: NavbarProps['color'];
@@ -32,20 +33,25 @@ export function Logo({color, logoColor, isDarkMode, className}: LogoProps) {
     return null;
   }
 
+  const desktopLogoUrl = desktopLogo ? getAssetUrl(desktopLogo) : '';
+  const mobileLogoUrl = mobileLogo ? getAssetUrl(mobileLogo) : desktopLogoUrl;
+
   return (
     <Link
       to="/"
       className={clsx(
-        'mr-4 block h-full max-h-26 flex-shrink-0 md:mr-24 md:max-h-36',
+        'mr-4 block h-full flex-shrink-0 md:mr-24',
         className,
       )}
+      style={{maxHeight: '41px'}}
       aria-label={trans({message: 'Go to homepage'})}
     >
       <picture>
-        <source srcSet={mobileLogo || desktopLogo} media="(max-width: 768px)" />
-        <source srcSet={desktopLogo} media="(min-width: 768px)" />
+        <source srcSet={mobileLogoUrl} media="(max-width: 768px)" />
+        <source srcSet={desktopLogoUrl} media="(min-width: 768px)" />
         <img
-          className="block h-full max-h-26 w-auto md:max-h-36"
+          src={desktopLogoUrl}
+          className="block h-full w-auto max-h-[58px] md:max-h-[60px]"
           alt={trans({message: 'Site logo'})}
         />
       </picture>

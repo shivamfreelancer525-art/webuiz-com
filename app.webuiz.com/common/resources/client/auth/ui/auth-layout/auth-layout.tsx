@@ -28,8 +28,10 @@ export function AuthLayout({heading, children, message}: AuthPageProps) {
       >
         <img
           src={isDarkMode ? branding.logo_light : branding?.logo_dark}
-          className="m-auto block h-42 w-auto"
+          className="m-auto block w-auto"
+          style={{height: '60px'}}
           alt=""
+          
         />
       </Link>
       <div className="mx-auto w-full max-w-440 rounded-lg bg px-40 pb-32 pt-40 shadow md:shadow-xl">

@@ -1,6 +1,6 @@
 import {Trans} from '@common/i18n/trans';
 import {Footer} from '@common/ui/footer/footer';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {DialogTrigger} from '@common/ui/overlays/dialog/dialog-trigger';
 import {Button} from '@common/ui/buttons/button';
 import {AddIcon} from '@common/icons/material/Add';
@@ -28,8 +28,11 @@ import {useTrans} from '@common/i18n/use-trans';
 import {DashboardNavbar} from '@app/dashboard/dashboard-navbar';
 import {DashboardWorkspaceSelector} from '@app/dashboard/dashboard-workspace-selector';
 import {useActiveWorkspaceId} from '@common/workspace/active-workspace-id-context';
-import {reloadAccountUsage} from '@app/editor/use-account-usage';
+import {reloadAccountUsage, useAccountUsage} from '@app/editor/use-account-usage';
 import {StaticPageTitle} from '@common/seo/static-page-title';
+import {PolicyFailMessage} from '@common/billing/upgrade/policy-fail-message';
+import {Link} from 'react-router-dom';
+import {LinkStyle} from '@common/ui/buttons/external-link';
 
 export function CustomDomainsPage() {
   return (
@@ -58,8 +61,9 @@ export function CustomDomainsPage() {
 }
 
 function Content() {
-  const {user} = useAuth();
+  const {user, getRestrictionValue} = useAuth();
   const {workspaceId} = useActiveWorkspaceId();
+  const {data: usage} = useAccountUsage();
   const query = useCustomDomains<Project>({
     userId: user!.id,
     perPage: 40,
@@ -67,26 +71,96 @@ function Content() {
     workspaceId,
   });
   const showNoResultsMessage = query.data?.pagination.data.length === 0;
+  
+  // Get website limit from user's plan (projects.create count restriction)
+  const maxWebsites = getRestrictionValue('projects.create', 'count') as
+    | number
+    | null
+    | undefined;
+  
+  // Get current domain count - prioritize query.data as it's the actual list
+  // Fallback to usage API if query not loaded yet
+  const currentDomains = query.data?.pagination.data.length ?? usage?.custom_domains.used ?? 0;
+  
+  // Check gate permission (from custom_domains.create policy)
+  const gateAllowed = usage ? (usage.custom_domains.create.allowed !== false) : true;
+  
+  // Check if within website limit (custom domains should match website limit)
+  // If maxWebsites is null/undefined, user has unlimited websites, so unlimited domains
+  const withinWebsiteLimit = maxWebsites === null || maxWebsites === undefined || currentDomains < maxWebsites;
+  
+  // User can create domain if: gate allows AND within website limit
+  const canCreateDomain = gateAllowed && withinWebsiteLimit;
+  
+  // Determine if limit is reached based on website limit
+  // Only check if we have a valid maxWebsites value and current count
+  const limitReached = 
+    maxWebsites !== null && 
+    maxWebsites !== undefined && 
+    typeof maxWebsites === 'number' &&
+    currentDomains >= maxWebsites;
+  
+  // Check if gate is blocking (from custom_domains.create policy)
+  const gateBlocked = usage && usage.custom_domains.create.allowed === false;
+  
+  // Show message when:
+  // 1. Limit is reached (currentDomains >= maxWebsites) - show if we have ANY data source
+  // 2. OR gate is explicitly blocking
+  // Always show if limit is reached, even if only one data source is available
+  const hasData = query.data !== undefined || usage !== undefined;
+  const shouldShowMessage = 
+    (limitReached && hasData) || 
+    (gateBlocked && usage);
+  
   return (
     <div className="mt-20 flex-auto">
-      <DialogTrigger
-        type="modal"
-        onClose={newDomain => {
-          if (newDomain) {
-            reloadAccountUsage();
-          }
-        }}
-      >
-        <Button
-          variant="outline"
-          color="primary"
-          startIcon={<AddIcon />}
-          size="xs"
+      <div className="mb-20">
+        <DialogTrigger
+          type="modal"
+          onClose={newDomain => {
+            if (newDomain) {
+              reloadAccountUsage();
+            }
+          }}
         >
-          <Trans message="Connect domain" />
-        </Button>
-        <ConnectDomainDialog />
-      </DialogTrigger>
+          <Button
+            variant="outline"
+            color="primary"
+            startIcon={<AddIcon />}
+            size="xs"
+            disabled={!canCreateDomain}
+          >
+            <Trans message="Connect domain" />
+          </Button>
+          <ConnectDomainDialog />
+        </DialogTrigger>
+      </div>
+      
+      {shouldShowMessage && (
+        <PolicyFailMessage
+          className="mb-20"
+          size="sm"
+          resourceName={<Trans message="custom domains" />}
+          reason={limitReached ? 'overQuota' : usage?.custom_domains.create.failReason}
+          message={
+            limitReached && maxWebsites !== null && maxWebsites !== undefined ? (
+              <Trans
+                message="You have reached the maximum number of custom domains allowed for your plan. Your plan allows :count website(s), so you can add up to :domainCount custom domain(s). <a>Please upgrade your plan to add more custom domains.</a>"
+                values={{
+                  count: maxWebsites,
+                  domainCount: maxWebsites,
+                  a: (text: ReactNode) => (
+                    <Link className={LinkStyle} to="/pricing">
+                      {text}
+                    </Link>
+                  ),
+                }}
+              />
+            ) : undefined
+          }
+        />
+      )}
+      
       <div className="mt-34">
         {showNoResultsMessage && <NoDomainsMessage />}
         {query.data ? (

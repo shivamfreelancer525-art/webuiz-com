@@ -58,7 +58,7 @@
                  <div class="col-xl-8 col-lg-6">
                      <div class="footer-bottom-logo text-lg-end text-center" data-aos="fade-right"
                          data-aos-duration="1500" data-aos-offset="50">
-                         <a href="/"><img src="assets/images/logos/logo-light.png" alt="Logo"></a>
+                         <a href="/"><img src="assets/images/logos/draggify_white.png" alt="Logo" style="width:180px;"></a>
                      </div>
                  </div>
              </div>
