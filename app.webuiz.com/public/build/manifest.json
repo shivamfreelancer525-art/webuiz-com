@@ -1,70 +1,70 @@
 {
-  "_CalendarToday-b2241dc4.js": {
-    "file": "assets/CalendarToday-b2241dc4.js",
+  "_CalendarToday-89b8186a.js": {
+    "file": "assets/CalendarToday-89b8186a.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_ChevronRight-206ccd86.js": {
-    "file": "assets/ChevronRight-206ccd86.js",
+  "_ChevronRight-e688a29b.js": {
+    "file": "assets/ChevronRight-e688a29b.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_Description-de54c5e0.js": {
-    "file": "assets/Description-de54c5e0.js",
+  "_Description-e9d9fb1f.js": {
+    "file": "assets/Description-e9d9fb1f.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_DesktopMac-b0243681.js": {
-    "file": "assets/DesktopMac-b0243681.js",
+  "_DesktopMac-d9d86f7b.js": {
+    "file": "assets/DesktopMac-d9d86f7b.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_DragIndicator-8c196cd4.js": {
+  "_DragIndicator-51da44a4.js": {
     "assets": [
       "assets/font-a5a81d1a.svg"
     ],
-    "file": "assets/DragIndicator-8c196cd4.js",
+    "file": "assets/DragIndicator-51da44a4.js",
     "imports": [
       "resources/client/main.tsx",
-      "_blank-page-skeleton-b08f2770.js"
+      "_blank-page-skeleton-5b37c773.js"
     ]
   },
-  "_Edit-e74b56c4.js": {
-    "file": "assets/Edit-e74b56c4.js",
+  "_Edit-c0a49008.js": {
+    "file": "assets/Edit-c0a49008.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_KeyboardBackspace-2beffa70.js": {
-    "file": "assets/KeyboardBackspace-2beffa70.js",
+  "_KeyboardBackspace-6eb4db81.js": {
+    "file": "assets/KeyboardBackspace-6eb4db81.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_OpenInNew-262a20e3.js": {
-    "file": "assets/OpenInNew-262a20e3.js",
+  "_OpenInNew-53c21caf.js": {
+    "file": "assets/OpenInNew-53c21caf.js",
     "imports": [
       "resources/client/main.tsx",
-      "_ChevronRight-206ccd86.js"
+      "_ChevronRight-e688a29b.js"
     ]
   },
-  "_TaskAlt-2b4929b3.js": {
-    "file": "assets/TaskAlt-2b4929b3.js",
+  "_TaskAlt-d76fd59e.js": {
+    "file": "assets/TaskAlt-d76fd59e.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_TrendingUp-dea15051.js": {
-    "file": "assets/TrendingUp-dea15051.js",
+  "_TrendingUp-34cc7aff.js": {
+    "file": "assets/TrendingUp-34cc7aff.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_admin-routes-5a124fc0.js": {
+  "_admin-routes-041a1b07.js": {
     "assets": [
       "assets/team-de984127.svg",
       "assets/dropdown-menu-c9b3bd6a.svg",
@@ -84,70 +84,70 @@
       "common/resources/client/article-editor/article-body-editor.tsx",
       "common/resources/client/admin/analytics/admin-report-page.tsx"
     ],
-    "file": "assets/admin-routes-5a124fc0.js",
+    "file": "assets/admin-routes-041a1b07.js",
     "imports": [
       "resources/client/main.tsx",
-      "_Edit-e74b56c4.js",
-      "_blank-page-skeleton-b08f2770.js",
-      "_DragIndicator-8c196cd4.js",
-      "_use-delete-domain-7b3f43e7.js",
-      "_OpenInNew-262a20e3.js",
-      "_ChevronRight-206ccd86.js"
+      "_Edit-c0a49008.js",
+      "_blank-page-skeleton-5b37c773.js",
+      "_DragIndicator-51da44a4.js",
+      "_use-delete-domain-04306f88.js",
+      "_OpenInNew-53c21caf.js",
+      "_ChevronRight-e688a29b.js"
     ],
     "isDynamicEntry": true
   },
-  "_billing-redirect-message-be68fe4f.js": {
-    "file": "assets/billing-redirect-message-be68fe4f.js",
+  "_billing-redirect-message-8ba0ddce.js": {
+    "file": "assets/billing-redirect-message-8ba0ddce.js",
     "imports": [
       "resources/client/main.tsx",
-      "_TaskAlt-2b4929b3.js"
+      "_TaskAlt-d76fd59e.js"
     ]
   },
-  "_blank-page-skeleton-b08f2770.js": {
-    "file": "assets/blank-page-skeleton-b08f2770.js",
+  "_blank-page-skeleton-5b37c773.js": {
+    "file": "assets/blank-page-skeleton-5b37c773.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_c-2317fea1.js": {
-    "file": "assets/c-2317fea1.js",
+  "_c-07169760.js": {
+    "file": "assets/c-07169760.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_index-79188b62.js": {
-    "file": "assets/index-79188b62.js",
+  "_index-9f162c71.js": {
+    "file": "assets/index-9f162c71.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_info-dialog-trigger-73afaf67.js": {
-    "file": "assets/info-dialog-trigger-73afaf67.js",
+  "_info-dialog-trigger-412f31f6.js": {
+    "file": "assets/info-dialog-trigger-412f31f6.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_project-settings-dialog-76e15096.js": {
+  "_project-settings-dialog-4bd0550b.js": {
     "assets": [
       "assets/publish-f1b40831.svg"
     ],
-    "file": "assets/project-settings-dialog-76e15096.js",
+    "file": "assets/project-settings-dialog-4bd0550b.js",
     "imports": [
       "resources/client/main.tsx",
-      "_blank-page-skeleton-b08f2770.js",
-      "_Edit-e74b56c4.js",
-      "_info-dialog-trigger-73afaf67.js"
+      "_blank-page-skeleton-5b37c773.js",
+      "_Edit-c0a49008.js",
+      "_info-dialog-trigger-412f31f6.js"
     ]
   },
-  "_use-delete-domain-7b3f43e7.js": {
+  "_use-delete-domain-04306f88.js": {
     "assets": [
       "assets/website-builder-2fb98cdd.svg",
       "assets/world-ea41c34b.svg"
     ],
-    "file": "assets/use-delete-domain-7b3f43e7.js",
+    "file": "assets/use-delete-domain-04306f88.js",
     "imports": [
       "resources/client/main.tsx",
-      "_blank-page-skeleton-b08f2770.js"
+      "_blank-page-skeleton-5b37c773.js"
     ]
   },
   "common/resources/client/ace-editor/ace-editor.tsx": {
@@ -157,10 +157,10 @@
       "assets/worker-php-75723c37.js",
       "assets/worker-javascript-e3ad1990.js"
     ],
-    "file": "assets/ace-editor-335d8af6.js",
+    "file": "assets/ace-editor-5cd32892.js",
     "imports": [
       "resources/client/main.tsx",
-      "_index-79188b62.js"
+      "_index-9f162c71.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/ace-editor/ace-editor.tsx"
@@ -169,18 +169,18 @@
     "dynamicImports": [
       "common/resources/client/charts/lazy-chart.tsx"
     ],
-    "file": "assets/admin-report-page-cf15c109.js",
+    "file": "assets/admin-report-page-166cf4e6.js",
     "imports": [
       "resources/client/main.tsx",
-      "_TrendingUp-dea15051.js",
-      "_admin-routes-5a124fc0.js",
-      "_info-dialog-trigger-73afaf67.js",
-      "_Edit-e74b56c4.js",
-      "_blank-page-skeleton-b08f2770.js",
-      "_DragIndicator-8c196cd4.js",
-      "_use-delete-domain-7b3f43e7.js",
-      "_OpenInNew-262a20e3.js",
-      "_ChevronRight-206ccd86.js"
+      "_TrendingUp-34cc7aff.js",
+      "_admin-routes-041a1b07.js",
+      "_info-dialog-trigger-412f31f6.js",
+      "_Edit-c0a49008.js",
+      "_blank-page-skeleton-5b37c773.js",
+      "_DragIndicator-51da44a4.js",
+      "_use-delete-domain-04306f88.js",
+      "_OpenInNew-53c21caf.js",
+      "_ChevronRight-e688a29b.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/admin/analytics/admin-report-page.tsx"
@@ -233,10 +233,10 @@
     "css": [
       "assets/article-body-editor-c0ff5600.css"
     ],
-    "file": "assets/article-body-editor-9e18c1ad.js",
+    "file": "assets/article-body-editor-7514a8c4.js",
     "imports": [
       "resources/client/main.tsx",
-      "_c-2317fea1.js"
+      "_c-07169760.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/article-editor/article-body-editor.tsx"
@@ -321,15 +321,15 @@
     "assets": [
       "assets/paypal-c2a77c63.svg"
     ],
-    "file": "assets/billing-page-routes-81ba655e.js",
+    "file": "assets/billing-page-routes-34594c79.js",
     "imports": [
       "resources/client/main.tsx",
-      "_OpenInNew-262a20e3.js",
-      "_billing-redirect-message-be68fe4f.js",
-      "_CalendarToday-b2241dc4.js",
-      "_Edit-e74b56c4.js",
-      "_ChevronRight-206ccd86.js",
-      "_TaskAlt-2b4929b3.js"
+      "_OpenInNew-53c21caf.js",
+      "_billing-redirect-message-8ba0ddce.js",
+      "_CalendarToday-89b8186a.js",
+      "_Edit-c0a49008.js",
+      "_ChevronRight-e688a29b.js",
+      "_TaskAlt-d76fd59e.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/billing/billing-page/billing-page-routes.tsx"
@@ -339,11 +339,11 @@
     "src": "common/resources/client/billing/billing-page/panels/paypal.svg"
   },
   "common/resources/client/billing/checkout/checkout-routes.tsx": {
-    "file": "assets/checkout-routes-aafe107b.js",
+    "file": "assets/checkout-routes-dbba9c02.js",
     "imports": [
       "resources/client/main.tsx",
-      "_billing-redirect-message-be68fe4f.js",
-      "_TaskAlt-2b4929b3.js"
+      "_billing-redirect-message-8ba0ddce.js",
+      "_TaskAlt-d76fd59e.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/billing/checkout/checkout-routes.tsx"
@@ -353,7 +353,7 @@
     "src": "common/resources/client/billing/upgrade/upgrade.svg"
   },
   "common/resources/client/charts/lazy-chart.tsx": {
-    "file": "assets/lazy-chart-a8a438cd.js",
+    "file": "assets/lazy-chart-5cecaf1c.js",
     "imports": [
       "resources/client/main.tsx"
     ],
@@ -376,10 +376,10 @@
     "css": [
       "assets/swagger-api-docs-page-34ffaf07.css"
     ],
-    "file": "assets/swagger-api-docs-page-df5bd05a.js",
+    "file": "assets/swagger-api-docs-page-ee99bb6f.js",
     "imports": [
       "resources/client/main.tsx",
-      "_index-79188b62.js"
+      "_index-9f162c71.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/swagger/swagger-api-docs-page.tsx"
@@ -392,9 +392,9 @@
     "css": [
       "assets/highlight-b5e2c008.css"
     ],
-    "file": "assets/highlight-c6f20c81.js",
+    "file": "assets/highlight-f396bdbe.js",
     "imports": [
-      "_c-2317fea1.js",
+      "_c-07169760.js",
       "resources/client/main.tsx"
     ],
     "isDynamicEntry": true,
@@ -405,22 +405,22 @@
     "src": "common/resources/client/ui/font-selector/font.svg"
   },
   "common/resources/client/ui/icon-picker/icon-list.tsx": {
-    "file": "assets/icon-list-fd982295.js",
+    "file": "assets/icon-list-dca9c7a5.js",
     "imports": [
       "resources/client/main.tsx",
-      "_Description-de54c5e0.js",
-      "_blank-page-skeleton-b08f2770.js",
-      "_admin-routes-5a124fc0.js",
-      "_DragIndicator-8c196cd4.js",
-      "_CalendarToday-b2241dc4.js",
-      "_ChevronRight-206ccd86.js",
-      "_DesktopMac-b0243681.js",
-      "_Edit-e74b56c4.js",
-      "_KeyboardBackspace-2beffa70.js",
-      "_OpenInNew-262a20e3.js",
-      "_use-delete-domain-7b3f43e7.js",
-      "_TaskAlt-2b4929b3.js",
-      "_TrendingUp-dea15051.js"
+      "_Description-e9d9fb1f.js",
+      "_blank-page-skeleton-5b37c773.js",
+      "_admin-routes-041a1b07.js",
+      "_DragIndicator-51da44a4.js",
+      "_CalendarToday-89b8186a.js",
+      "_ChevronRight-e688a29b.js",
+      "_DesktopMac-d9d86f7b.js",
+      "_Edit-c0a49008.js",
+      "_KeyboardBackspace-6eb4db81.js",
+      "_OpenInNew-53c21caf.js",
+      "_use-delete-domain-04306f88.js",
+      "_TaskAlt-d76fd59e.js",
+      "_TrendingUp-34cc7aff.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/ui/icon-picker/icon-list.tsx"
@@ -458,16 +458,16 @@
     "src": "resources/client/admin/verts/dashboard-top.webp"
   },
   "resources/client/dashboard/dashboard-routes.tsx": {
-    "file": "assets/dashboard-routes-fb673a16.js",
+    "file": "assets/dashboard-routes-d67298ac.js",
     "imports": [
       "resources/client/main.tsx",
-      "_use-delete-domain-7b3f43e7.js",
-      "_blank-page-skeleton-b08f2770.js",
-      "_project-settings-dialog-76e15096.js",
-      "_KeyboardBackspace-2beffa70.js",
-      "_Edit-e74b56c4.js",
-      "_DesktopMac-b0243681.js",
-      "_info-dialog-trigger-73afaf67.js"
+      "_use-delete-domain-04306f88.js",
+      "_blank-page-skeleton-5b37c773.js",
+      "_project-settings-dialog-4bd0550b.js",
+      "_KeyboardBackspace-6eb4db81.js",
+      "_Edit-c0a49008.js",
+      "_DesktopMac-d9d86f7b.js",
+      "_info-dialog-trigger-412f31f6.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/client/dashboard/dashboard-routes.tsx"
@@ -502,17 +502,17 @@
     "dynamicImports": [
       "common/resources/client/ace-editor/ace-editor.tsx"
     ],
-    "file": "assets/editor-page-3c101cb0.js",
+    "file": "assets/editor-page-79085379.js",
     "imports": [
       "resources/client/main.tsx",
-      "_DragIndicator-8c196cd4.js",
-      "_blank-page-skeleton-b08f2770.js",
-      "_Description-de54c5e0.js",
-      "_DesktopMac-b0243681.js",
-      "_ChevronRight-206ccd86.js",
-      "_Edit-e74b56c4.js",
-      "_project-settings-dialog-76e15096.js",
-      "_info-dialog-trigger-73afaf67.js"
+      "_DragIndicator-51da44a4.js",
+      "_blank-page-skeleton-5b37c773.js",
+      "_Description-e9d9fb1f.js",
+      "_DesktopMac-d9d86f7b.js",
+      "_ChevronRight-e688a29b.js",
+      "_Edit-c0a49008.js",
+      "_project-settings-dialog-4bd0550b.js",
+      "_info-dialog-trigger-412f31f6.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/client/editor/editor-page.tsx"
@@ -522,7 +522,7 @@
     "src": "resources/client/editor/editor-sidebar/inspector-panel/website-builder.svg"
   },
   "resources/client/main.css": {
-    "file": "assets/main-fd83847c.css",
+    "file": "assets/main-f7732b6d.css",
     "src": "resources/client/main.css"
   },
   "resources/client/main.tsx": {
@@ -536,7 +536,7 @@
       "assets/secure-files-17b4728d.svg"
     ],
     "css": [
-      "assets/main-fd83847c.css"
+      "assets/main-f7732b6d.css"
     ],
     "dynamicImports": [
       "common/resources/client/text-editor/highlight/highlight.ts",
@@ -544,10 +544,10 @@
       "common/resources/client/billing/checkout/checkout-routes.tsx",
       "resources/client/dashboard/dashboard-routes.tsx",
       "resources/client/editor/editor-page.tsx",
-      "_admin-routes-5a124fc0.js",
+      "_admin-routes-041a1b07.js",
       "common/resources/client/swagger/swagger-api-docs-page.tsx"
     ],
-    "file": "assets/main-6830aae5.js",
+    "file": "assets/main-8a32d242.js",
     "isEntry": true,
     "src": "resources/client/main.tsx"
   },

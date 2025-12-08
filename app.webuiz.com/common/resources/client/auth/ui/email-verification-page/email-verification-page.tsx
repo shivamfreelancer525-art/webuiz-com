@@ -43,12 +43,13 @@ export function EmailVerificationPage() {
           <Trans message="Logout" />
         </Button>
         {logoSrc && (
+          <div className="auth-logo mb-44">
           <img
             src={logoSrc}
             alt="Site logo"
-            className="mx-auto mb-44 block w-auto"
-            style={{height: '60px'}}
+              className="mx-auto block w-auto"
           />
+          </div>
         )}
         <div className="text-center">
           <h1 className="mb-24 text-3xl">

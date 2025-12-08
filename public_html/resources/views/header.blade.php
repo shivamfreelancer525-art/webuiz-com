@@ -39,6 +39,43 @@
     <link rel="stylesheet" href="assets/css/aos.css">
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Responsive logo styles */
+        .logo-outer .logo img {
+            width: 150px !important;
+            max-width: 180px;
+            height: auto;
+        }
+        .mobile-logo img {
+            width: 150px !important;
+            max-width: 150px;
+            height: auto;
+        }
+        /* Tablet (768px and up) */
+        @media (min-width: 768px) {
+            .logo-outer .logo img {
+                width: 150px !important;
+            }
+            .mobile-logo img {
+                width: 150px !important;
+            }
+        }
+        /* Desktop (992px and up) */
+        @media (min-width: 992px) {
+            .logo-outer .logo img {
+                width: 180px !important;
+            }
+        }
+        /* Small mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+            .logo-outer .logo img {
+                width: 150px !important;
+            }
+            .mobile-logo img {
+                width: 150px !important;
+            }
+        }
+    </style>
     <script src="//code.tidio.co/y6omcxkigngkhz3s2hwdrpuih7cf97ar.js" async></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-413PKVHE59"></script>
@@ -64,14 +101,14 @@
                     <div class="header-inner py-20 rpy-10 rel d-flex align-items-center">
                         <div class="logo-outer">
                             <div class="logo"><a href="/"><img src="assets/images/logos/draggify_black.png"
-                                        alt="Logo" title="Logo" class="logo" style="width:180px;"></a></div>
+                                        alt="Logo" title="Logo" class="logo"></a></div>
                         </div>
                         <div class="nav-outer ms-lg-auto clearfix">
                             <nav class="main-menu navbar-expand-lg">
                                 <div class="navbar-header py-10">
                                     <div class="mobile-logo">
                                         <a href="/">
-                                            <img src="assets/images/logos/draggify_black.png" alt="Logo" title="Logo"  style="width:80px; height:80px;">
+                                            <img src="assets/images/logos/draggify_black.png" alt="Logo" title="Logo">
                                         </a>
                                     </div>
                                     <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
@@ -93,8 +130,8 @@
                             </nav>
                         </div>
                         <div class="menu-btns ms-lg-auto">
-                            <a href="http://localhost:8000/login" class="light-btn">Log in</a>
-                            <a href="http://localhost:8000/register" class="theme-btn">Register <i
+                            <a href="https://app.draggify.com/login" class="light-btn">Log in</a>
+                            <a href="https://app.draggify.com/register" class="theme-btn">Register <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>

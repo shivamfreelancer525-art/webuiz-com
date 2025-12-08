@@ -40,10 +40,9 @@ export function Logo({color, logoColor, isDarkMode, className}: LogoProps) {
     <Link
       to="/"
       className={clsx(
-        'mr-4 block h-full flex-shrink-0 md:mr-24',
+        'mr-4 block h-full flex-shrink-0 md:mr-24 navbar-logo',
         className,
       )}
-      style={{maxHeight: '41px'}}
       aria-label={trans({message: 'Go to homepage'})}
     >
       <picture>
@@ -51,7 +50,7 @@ export function Logo({color, logoColor, isDarkMode, className}: LogoProps) {
         <source srcSet={desktopLogoUrl} media="(min-width: 768px)" />
         <img
           src={desktopLogoUrl}
-          className="block h-full w-auto max-h-[58px] md:max-h-[60px]"
+          className="block h-full w-auto"
           alt={trans({message: 'Site logo'})}
         />
       </picture>

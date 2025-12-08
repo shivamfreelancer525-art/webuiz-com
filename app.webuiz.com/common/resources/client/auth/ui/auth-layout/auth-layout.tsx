@@ -23,15 +23,13 @@ export function AuthLayout({heading, children, message}: AuthPageProps) {
     >
       <Link
         to="/"
-        className="mb-40 block flex-shrink-0"
+        className="mb-40 block flex-shrink-0 auth-logo"
         aria-label={trans({message: 'Go to homepage'})}
       >
         <img
           src={isDarkMode ? branding.logo_light : branding?.logo_dark}
           className="m-auto block w-auto"
-          style={{height: '60px'}}
           alt=""
-          
         />
       </Link>
       <div className="mx-auto w-full max-w-440 rounded-lg bg px-40 pb-32 pt-40 shadow md:shadow-xl">

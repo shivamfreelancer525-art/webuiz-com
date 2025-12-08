@@ -70,6 +70,47 @@
             @endif
         @endif
 
+        <style>
+            /* Responsive logo styles for auth pages (login/register) */
+            .auth-logo img {
+                width: 150px !important;
+                max-width: 150px;
+                height: auto;
+            }
+            /* Tablet and Desktop (768px and up) - same as current 60px */
+            @media (min-width: 768px) {
+                .auth-logo img {
+                    width: 180px !important;
+                    max-width: 180px;
+                }
+            }
+            
+            /* Responsive logo styles for navbar (main app after login) - same as landing page */
+            .navbar-logo img {
+                width: 150px !important;
+                max-width: 180px;
+                height: auto;
+            }
+            /* Tablet (768px and up) */
+            @media (min-width: 768px) {
+                .navbar-logo img {
+                    width: 130px !important;
+                }
+            }
+            /* Desktop (992px and up) */
+            @media (min-width: 992px) {
+                .navbar-logo img {
+                    width: 180px !important;
+                }
+            }
+            /* Small mobile (max-width: 480px) */
+            @media (max-width: 480px) {
+                .navbar-logo img {
+                    width: 130px !important;
+                }
+            }
+        </style>
+
         @if (file_exists($customHtmlPath))
             @if ($content = file_get_contents($customHtmlPath))
                 {!! $content !!}
