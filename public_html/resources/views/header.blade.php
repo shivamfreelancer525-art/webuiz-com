@@ -130,8 +130,8 @@
                             </nav>
                         </div>
                         <div class="menu-btns ms-lg-auto">
-                            <a href="https://app.draggify.com/login" class="light-btn">Log in</a>
-                            <a href="https://app.draggify.com/register" class="theme-btn">Register <i
+                            <a href="http://localhost:8000/login" class="light-btn">Log in</a>
+                            <a href="http://localhost:8000/register" class="theme-btn">Register <i
                                     class="far fa-arrow-right"></i></a>
                         </div>
                     </div>

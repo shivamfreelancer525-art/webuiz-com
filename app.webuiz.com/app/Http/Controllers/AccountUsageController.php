@@ -42,8 +42,10 @@ class AccountUsageController extends BaseController
             ],
             'custom_domains' => [
                 'used' => $user->customDomains()->count(),
+                // Custom domains limit should match the website limit (projects.create count)
+                // This allows users to have as many custom domains as they have websites
                 'total' => $user->getRestrictionValue(
-                    'custom_domains.create',
+                    'projects.create',
                     'count',
                 ),
                 'create' => $this->gateResponseToArray(

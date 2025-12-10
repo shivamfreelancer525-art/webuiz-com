@@ -56,24 +56,89 @@ interface PlanListProps {
   selectedPeriod: UpsellBillingCycle;
 }
 function PlanList({plans, selectedPeriod}: PlanListProps) {
-  const {isLoggedIn, isSubscribed} = useAuth();
+  const {isLoggedIn, isSubscribed, user} = useAuth();
   const filteredPlans = plans.filter(plan => !plan.hidden);
+  
+  // Get user's current subscription product ID, product, price, and price_id
+  const currentSubscription = user?.subscriptions?.find(sub => sub.valid);
+  const currentProductId = currentSubscription?.product_id;
+  const currentProduct = currentSubscription?.product;
+  const currentPrice = currentSubscription?.price;
+  const currentPriceId = currentSubscription?.price_id;
+  
+  // Determine current subscription's billing cycle (monthly or yearly)
+  // Based on find-best-price.ts logic:
+  // - Yearly: interval === 'year' && interval_count >= 1, OR interval === 'month' && interval_count >= 12
+  // - Monthly: interval === 'month' && interval_count >= 1, OR interval === 'day' && interval_count >= 30
+  const getBillingCycle = (price: typeof currentPrice): UpsellBillingCycle | null => {
+    if (!price) return null;
+    
+    // Check for yearly first (more specific)
+    if (
+      (price.interval === 'year' && price.interval_count >= 1) ||
+      (price.interval === 'month' && price.interval_count >= 12)
+    ) {
+      return 'yearly';
+    }
+    
+    // Check for monthly
+    if (
+      (price.interval === 'month' && price.interval_count >= 1) ||
+      (price.interval === 'day' && price.interval_count >= 30)
+    ) {
+      return 'monthly';
+    }
+    
+    return null;
+  };
+  
+  const currentBillingCycle = getBillingCycle(currentPrice);
+  
+  // Check if user has an active paid plan (not free/Trial)
+  const hasActivePaidPlan = isSubscribed && currentProduct && !currentProduct.free;
+  
+  // Check if user is on Trial plan (logged in but no active paid subscription)
+  const isOnTrialPlan = isLoggedIn && !hasActivePaidPlan;
+  
   return (
     <Fragment>
       {filteredPlans.map((plan, index) => {
         const isFirst = index === 0;
         const isLast = index === filteredPlans.length - 1;
         const price = findBestPrice(selectedPeriod, plan.prices);
+        
+        // Check if this is the user's current plan in the selected billing cycle (for disabling button and showing text)
+        // For paid plans: check if product ID matches AND billing cycle matches
+        // For Trial plan: only show as current if user has no active paid plan
+        const isCurrentPlan = plan.free 
+          ? isOnTrialPlan 
+          : currentProductId === plan.id && (
+              currentBillingCycle === selectedPeriod || 
+              (currentPriceId && price?.id === currentPriceId)
+            );
+        
+        // Check if this is the same product but different billing cycle (for allowing upgrade/change)
+        const isSameProductDifferentCycle = !plan.free && 
+          currentProductId === plan.id && 
+          currentBillingCycle !== null &&
+          currentBillingCycle !== selectedPeriod;
+
+        // Trial plan should always be disabled for all users
+        const isTrialPlanDisabled = plan.free;
 
         let upgradeRoute;
-        if (!isLoggedIn) {
-          upgradeRoute = `/register?redirectFrom=pricing`;
-        }
-        if (isSubscribed) {
-          upgradeRoute = `/change-plan/${plan.id}/${price?.id}/confirm`;
-        }
-        if (isLoggedIn && !plan.free) {
-          upgradeRoute = `/checkout/${plan.id}/${price?.id}`;
+        // Don't set upgrade route for Trial plan (always disabled) or current plan in matching billing cycle
+        // Allow upgrade route for same product in different billing cycle (so user can switch)
+        if (!isTrialPlanDisabled && !isCurrentPlan) {
+          if (!isLoggedIn) {
+            upgradeRoute = `/register?redirectFrom=pricing`;
+          }
+          if (isSubscribed) {
+            upgradeRoute = `/change-plan/${plan.id}/${price?.id}/confirm`;
+          }
+          if (isLoggedIn && !plan.free) {
+            upgradeRoute = `/checkout/${plan.id}/${price?.id}`;
+          }
         }
 
         return (
@@ -124,7 +189,7 @@ function PlanList({plans, selectedPeriod}: PlanListProps) {
                   className="w-full"
                   size="md"
                   elementType={upgradeRoute ? Link : undefined}
-                  disabled={!upgradeRoute}
+                  disabled={!upgradeRoute || isCurrentPlan || isTrialPlanDisabled}
                   onClick={() => {
                     if (isLoggedIn || !price || !plan) return;
                     setInLocalStorage('be.onboarding.selected', {
@@ -134,7 +199,20 @@ function PlanList({plans, selectedPeriod}: PlanListProps) {
                   }}
                   to={upgradeRoute}
                 >
-                  {plan.free ? (
+                  {isTrialPlanDisabled ? (
+                    // Trial plan: show "Current Plan" only if user has no active paid plan
+                    isOnTrialPlan ? (
+                      <Trans message="Current Plan" />
+                    ) : (
+                      <Trans message="Get started" />
+                    )
+                  ) : isCurrentPlan ? (
+                    // Current plan in matching billing cycle: show "Current Plan"
+                    <Trans message="Current Plan" />
+                  ) : isSameProductDifferentCycle ? (
+                    // Same product but different billing cycle: show "Upgrade" (enabled)
+                    <Trans message="Upgrade" />
+                  ) : plan.free ? (
                     <Trans message="Get started" />
                   ) : (
                     <Trans message="Upgrade" />
