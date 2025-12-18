@@ -197,17 +197,26 @@ class BaseBootstrapData implements BootstrapData
     protected function logActiveSession(): void
     {
         if ($this->data['user']) {
-            $token = $this->data['user']->currentAccessToken();
-            LogActiveSessionJob::dispatch([
-                'user_id' => $this->data['user']->id,
-                'ip_address' => getIp(),
-                'user_agent' => $this->request->userAgent(),
-                'session_id' => session()->getId(),
-                'token' =>
-                    $token instanceof PersonalAccessToken
-                        ? $token->token
-                        : null,
-            ]);
+            try {
+                $token = $this->data['user']->currentAccessToken();
+                LogActiveSessionJob::dispatch([
+                    'user_id' => $this->data['user']->id,
+                    'ip_address' => getIp(),
+                    'user_agent' => $this->request->userAgent(),
+                    'session_id' => session()->getId(),
+                    'token' =>
+                        $token instanceof PersonalAccessToken
+                            ? $token->token
+                            : null,
+                ]);
+            } catch (\Exception $e) {
+                // Silently fail if token doesn't exist (e.g., newly registered user)
+                // This is not critical for registration flow
+                \Log::debug('Could not log active session', [
+                    'user_id' => $this->data['user']->id,
+                    'error' => $e->getMessage(),
+                ]);
+            }
         }
     }
 }

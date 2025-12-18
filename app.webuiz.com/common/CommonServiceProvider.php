@@ -596,7 +596,16 @@ class CommonServiceProvider extends ServiceProvider
                 app(Settings::class)->get('require_email_confirmation') &&
                 !$event->user->hasVerifiedEmail()
             ) {
-                $event->user->sendEmailVerificationNotification();
+                try {
+                    $event->user->sendEmailVerificationNotification();
+                } catch (\Exception $e) {
+                    \Log::warning('Failed to send email verification notification', [
+                        'user_id' => $event->user->id,
+                        'email' => $event->user->email,
+                        'error' => $e->getMessage(),
+                    ]);
+                    // Don't throw - allow registration to complete even if email fails
+                }
             }
         });
 
