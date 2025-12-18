@@ -34,11 +34,20 @@ class CustomDomainPolicy extends BasePolicy
             return Response::allow();
         }
 
+        // Check if user is on trial plan (free product)
+        // Trial plan users cannot add any custom domains
+        $subscriptionProduct = $user->getSubscriptionProduct();
+        if ($subscriptionProduct && $subscriptionProduct->free) {
+            $message = __('Trial plan does not allow custom domains. Please upgrade your plan to add custom domains.');
+            return $this->denyWithAction($message, $this->upgradeAction());
+        }
+
         // Custom domains limit should match the website limit (projects.create count)
         // This allows users to have as many custom domains as they have websites
         $maxWebsites = $user->getRestrictionValue('projects.create', 'count');
         if (!$maxWebsites) {
-            // No website limit means unlimited custom domains
+            // No website limit means unlimited custom domains (for paid plans only)
+            // But we already checked for trial plan above, so this is safe
             return Response::allow();
         }
 

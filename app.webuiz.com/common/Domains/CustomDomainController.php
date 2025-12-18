@@ -47,7 +47,23 @@ class CustomDomainController extends BaseController
     {
         $user = Auth::user();
         
-        // First check: Validate custom domain limit based on user's website/project limit
+        // First check: Trial plan users cannot add custom domains
+        $subscriptionProduct = $user->getSubscriptionProduct();
+        if ($subscriptionProduct && $subscriptionProduct->free) {
+            $billingEnabled = settings('billing.enable');
+            $upgradeAction = $billingEnabled 
+                ? ['label' => __('Upgrade'), 'action' => '/pricing']
+                : null;
+            
+            return $this->error(
+                __('Trial plan does not allow custom domains. Please upgrade your plan to add custom domains.'),
+                [],
+                403,
+                $upgradeAction ? ['action' => $upgradeAction] : []
+            );
+        }
+        
+        // Second check: Validate custom domain limit based on user's website/project limit
         $maxWebsites = $user->getRestrictionValue('projects.create', 'count');
         $currentDomains = $user->customDomains()->count();
         
@@ -152,7 +168,23 @@ class CustomDomainController extends BaseController
     {
         $user = Auth::user();
         
-        // First check: Validate custom domain limit based on user's website/project limit
+        // First check: Trial plan users cannot add custom domains
+        $subscriptionProduct = $user->getSubscriptionProduct();
+        if ($subscriptionProduct && $subscriptionProduct->free) {
+            $billingEnabled = settings('billing.enable');
+            $upgradeAction = $billingEnabled 
+                ? ['label' => __('Upgrade'), 'action' => '/pricing']
+                : null;
+            
+            return $this->error(
+                __('Trial plan does not allow custom domains. Please upgrade your plan to add custom domains.'),
+                [],
+                403,
+                $upgradeAction ? ['action' => $upgradeAction] : []
+            );
+        }
+        
+        // Second check: Validate custom domain limit based on user's website/project limit
         $maxWebsites = $user->getRestrictionValue('projects.create', 'count');
         $currentDomains = $user->customDomains()->count();
         

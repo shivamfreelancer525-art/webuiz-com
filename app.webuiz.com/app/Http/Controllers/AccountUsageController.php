@@ -44,10 +44,8 @@ class AccountUsageController extends BaseController
                 'used' => $user->customDomains()->count(),
                 // Custom domains limit should match the website limit (projects.create count)
                 // This allows users to have as many custom domains as they have websites
-                'total' => $user->getRestrictionValue(
-                    'projects.create',
-                    'count',
-                ),
+                // Trial plan users (free product) get 0 total
+                'total' => $this->getCustomDomainTotal($user),
                 'create' => $this->gateResponseToArray(
                     'store',
                     CustomDomain::class,
@@ -102,6 +100,18 @@ class AccountUsageController extends BaseController
             'allowed' => false,
             'failReason' => 'noPermission',
         ];
+    }
+
+    private function getCustomDomainTotal($user): ?int
+    {
+        // Trial plan users (free product) cannot add custom domains
+        $subscriptionProduct = $user->getSubscriptionProduct();
+        if ($subscriptionProduct && $subscriptionProduct->free) {
+            return 0;
+        }
+
+        // For paid plans, custom domains limit matches website limit
+        return $user->getRestrictionValue('projects.create', 'count');
     }
 
     private function getAiUsage(string $permission): array
