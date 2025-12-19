@@ -169,9 +169,38 @@ function ProjectGrid({query}: ProjectGridProps) {
               </div>
               <div className="flex items-center gap-6 p-20">
                 <div className="flex-auto">
-                  <div className="font-bold">{project.name}</div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      console.log('Project name clicked:', project.name);
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const url = getProjectPreviewUrl(project);
+                      console.log('Original URL:', url);
+                      // Ensure URL is absolute
+                      const absoluteUrl = url.startsWith('http://') || url.startsWith('https://') 
+                        ? url 
+                        : `${window.location.origin}${url.startsWith('/') ? url : '/' + url}`;
+                      console.log('Absolute URL:', absoluteUrl);
+                      // Always open in new tab
+                      const newWindow = window.open(absoluteUrl, '_blank', 'noopener,noreferrer');
+                      console.log('Window opened:', newWindow);
+                      if (!newWindow) {
+                        console.warn('Popup blocked. Please allow popups for this site.');
+                        alert('Popup blocked! Please allow popups for this site or use Ctrl+Click to open in new tab.');
+                      }
+                    }}
+                    onMouseDown={(e) => {
+                      // Prevent any other handlers from interfering
+                      e.stopPropagation();
+                    }}
+                    className="font-bold hover:text-primary transition-colors cursor-pointer text-left bg-transparent border-0 p-0 m-0 w-auto h-auto block"
+                    title={`Open ${project.name} in new tab`}
+                  >
+                    {project.name}
+                  </button>
                   <div className="text-sm text-muted">
-                    <ProjectLink project={project} />
+                    <ProjectLink project={project} target="_blank" />
                   </div>
                   <div className="mt-4 text-xs text-muted">
                     <FormattedRelativeTime date={project.updated_at} />

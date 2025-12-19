@@ -16,11 +16,50 @@ export function ProjectLink({
   className,
   children,
   color = 'inherit',
+  target,
   ...linkProps
 }: Props) {
   const finalUri = useMemo(() => {
     return getProjectPreviewUrl(project);
   }, [project]);
+
+  // Always use anchor tag for project preview URLs to allow opening in new tab
+  // React Router Link doesn't support target="_blank" properly
+  const shouldOpenInNewTab = target === '_blank';
+  
+  if (shouldOpenInNewTab) {
+    return (
+      <a
+        href={finalUri}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => {
+          e.stopPropagation();
+          // Ensure it opens in new tab
+          const url = finalUri;
+          const absoluteUrl = url.startsWith('http://') || url.startsWith('https://') 
+            ? url 
+            : `${window.location.origin}${url.startsWith('/') ? url : '/' + url}`;
+          console.log('ProjectLink clicked, opening:', absoluteUrl);
+          const newWindow = window.open(absoluteUrl, '_blank', 'noopener,noreferrer');
+          if (!newWindow) {
+            console.warn('Popup blocked for ProjectLink');
+          }
+          e.preventDefault();
+        }}
+        className={clsx(
+          color === 'primary'
+            ? 'text-primary hover:text-primary-dark'
+            : 'text-inherit',
+          'overflow-x-hidden overflow-ellipsis outline-none transition-colors hover:underline focus-visible:underline',
+          className,
+        )}
+        {...(linkProps as any)}
+      >
+        {children ?? getProjectPreviewUrl(project, {removeProtocol: true})}
+      </a>
+    );
+  }
 
   return (
     <Link
