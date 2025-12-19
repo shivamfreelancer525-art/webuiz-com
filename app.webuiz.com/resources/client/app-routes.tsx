@@ -106,6 +106,8 @@ export function AppRoutes() {
           />
         )}
         <Route path="contact" element={<ContactUsPage />} />
+        <Route path="privacy-policy" element={<CustomPageLayout slug="privacy-policy" />} />
+        <Route path="terms-and-conditions" element={<CustomPageLayout slug="terms-and-conditions" />} />
         <Route path="pages/:pageSlug" element={<CustomPageLayout />} />
         <Route path="pages/:pageId/:pageSlug" element={<CustomPageLayout />} />
         <Route path="*" element={<NotFoundPage />} />

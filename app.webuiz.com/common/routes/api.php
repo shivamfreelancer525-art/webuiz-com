@@ -68,6 +68,12 @@ use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 
 // prettier-ignore
 Route::group(['prefix' => 'v1'], function () {
+    // Allow public access to default custom pages (privacy-policy, terms-and-conditions) via API
+    // This must be defined BEFORE the middleware group to take precedence
+    Route::get('custom-pages/{id}', [CustomPageController::class, 'show'])
+        ->where('id', '[0-9]+|.*')
+        ->withoutMiddleware(['verified', 'verifyApiAccess']);
+    
     Route::group(['middleware' => ['optionalAuth:sanctum', 'verified', 'verifyApiAccess']], function () {
         // FILE ENTRIES
         Route::get('file-entries/{fileEntry}/model', [FileEntriesController::class, 'showModel']);
@@ -176,8 +182,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('admin/appearance/seo-tags/{name}', [SeoTagsController::class, 'show']);
         Route::put('admin/appearance/seo-tags/{name}', [SeoTagsController::class, 'update']);
 
-        // CUSTOM PAGES
-        Route::apiResource('custom-pages', CustomPageController::class);
+        // CUSTOM PAGES (exclude 'show' as it's defined as public route above)
+        Route::apiResource('custom-pages', CustomPageController::class)->except(['show']);
 
         // COMMENTS
         Route::apiResource('comment', CommentController::class);

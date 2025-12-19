@@ -11,8 +11,10 @@ interface Props {
   slug?: string;
 }
 export function CustomPageLayout({slug}: Props) {
-  const {pageSlug} = useParams();
-  const query = useCustomPage(slug || pageSlug!);
+  const {pageSlug, pageId} = useParams();
+  // Use slug prop if provided, otherwise try pageSlug or pageId from params
+  const pageIdentifier = slug || pageSlug || pageId;
+  const query = useCustomPage(pageIdentifier);
 
   useEffect(() => {
     if (query.data?.page) {
@@ -24,7 +26,7 @@ export function CustomPageLayout({slug}: Props) {
     <div className="flex flex-col min-h-screen bg">
       <PageMetaTags query={query} />
       <Navbar
-        menuPosition="custom-page-navbar"
+        menuPosition="contact-us-page"
         className="flex-shrink-0 sticky top-0"
       />
       <div className="flex-auto">

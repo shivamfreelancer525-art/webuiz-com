@@ -53,14 +53,14 @@ return [
                         'id' => 'rlz27v',
                         'position' => 2,
                         'label' => 'Privacy Policy',
-                        'action' => '/pages/privacy-policy',
+                        'action' => '/privacy-policy',
                     ],
                     [
                         'type' => 'route',
                         'id' => 'p80pvk',
                         'position' => 3,
-                        'label' => 'Terms of Service',
-                        'action' => '/pages/terms-of-service',
+                        'label' => 'Terms & Conditions',
+                        'action' => '/terms-and-conditions',
                     ],
                     [
                         'type' => 'route',

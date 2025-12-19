@@ -12,6 +12,16 @@ class PagePolicy extends BasePolicy
 
     public function show(?User $user, CustomPage $customPage)
     {
+        // Allow public access to default pages (privacy-policy, terms-and-conditions, terms-of-service, etc.)
+        if ($customPage->type === 'default' && in_array($customPage->slug, ['privacy-policy', 'terms-and-conditions', 'terms-of-service'])) {
+            return true;
+        }
+        
+        // For other pages, require authentication and permission
+        if (!$user) {
+            return false;
+        }
+        
         return $user->hasPermission('custom_pages.view') || $customPage->user_id === $user->id;
     }
 

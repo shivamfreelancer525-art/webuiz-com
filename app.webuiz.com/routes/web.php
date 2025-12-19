@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PolicyPageController;
 use App\Http\Controllers\TemplatePreviewController;
 use App\Http\Controllers\UserSiteController;
 use Common\Core\Controllers\HomeController;
@@ -8,6 +9,9 @@ use Common\Pages\CustomPageController;
 
 Route::get('/', LandingPageController::class);
 Route::get('contact', [HomeController::class, 'render']);
+// Direct routes for privacy and terms (without /pages/ prefix) - using Blade templates like webuiz
+Route::get('privacy-policy', [PolicyPageController::class, 'privacyPolicy']);
+Route::get('terms-and-conditions', [PolicyPageController::class, 'termsAndConditions']);
 Route::get('pages/{slugOrId}', [CustomPageController::class, 'show']);
 Route::get('login', [HomeController::class, 'render'])->name('login');
 Route::get('register', [HomeController::class, 'render'])->name('register');

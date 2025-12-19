@@ -2,3 +2,75 @@
   content: '';
   display: inline-block;
 }
+
+/* Match webuiz styling exactly for policy pages */
+.custom-page-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  color: #696969; /* --base-color from webuiz */
+}
+
+.custom-page-body h4 {
+  font-size: 24px; /* Exact webuiz h4 size */
+  font-weight: 600;
+  line-height: 1.4; /* Exact webuiz h4 line-height */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #001726; /* --heading-color from webuiz */
+  font-family: 'Work Sans', sans-serif; /* --heading-font from webuiz */
+}
+
+.custom-page-body h4:first-of-type {
+  margin-top: 0;
+}
+
+.custom-page-body p {
+  font-size: 16px; /* Match webuiz body font size */
+  line-height: 30px; /* Match webuiz body line-height */
+  color: #696969; /* --base-color from webuiz */
+  margin-bottom: 1rem;
+  margin-top: 0;
+  font-family: 'Inter', sans-serif; /* --base-font from webuiz */
+}
+
+.custom-page-body p:first-child {
+  margin-top: 0;
+}
+
+/* Remove bullets and align lists with content - match webuiz format */
+.custom-page-body ul {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+
+.custom-page-body ul li {
+  font-size: 16px; /* Match webuiz body font size */
+  line-height: 30px; /* Match webuiz body line-height */
+  color: #696969; /* --base-color from webuiz */
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+  padding-left: 0;
+  font-family: 'Inter', sans-serif; /* --base-font from webuiz */
+}
+
+.custom-page-body ul li::before {
+  content: none;
+}
+
+.custom-page-body ul li p {
+  font-size: 16px;
+  line-height: 30px;
+  color: #696969;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.custom-page-body strong {
+  font-weight: 600;
+  color: #696969; /* Match webuiz - bold terms use same color as body text */
+  font-family: 'Inter', sans-serif; /* Use body font family */
+}
