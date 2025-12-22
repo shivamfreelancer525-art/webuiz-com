@@ -26,9 +26,9 @@ return [
     ],
     'dark' => [
         '--be-foreground-base' => '255 255 255',
-        '--be-primary-light' => '239 246 255', // 50
-        '--be-primary' => '191 219 254', // 200
-        '--be-primary-dark' => '147 197 253', // 300
+        '--be-primary-light' => '191 219 254', // 200
+        '--be-primary' => '59 130 246', // 500 - same vibrant blue as light mode
+        '--be-primary-dark' => '37 99 235', // 600 - same as light mode
         '--be-on-primary' => '255 255 255',
         '--be-background' => '28 28 32',
         '--be-background-alt' => '41 41 46',

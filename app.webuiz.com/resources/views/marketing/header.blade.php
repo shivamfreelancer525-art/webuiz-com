@@ -75,8 +75,120 @@
                 width: 150px !important;
             }
         }
+        /* Disable chat widget and icon-bar globally - COMPREHENSIVE */
+        /* Tidio-specific */
+        #tidio-chat-iframe,
+        .tidio-chat,
+        .tidio-chat-button,
+        [id*="tidio"],
+        [id*="Tidio"],
+        [class*="tidio"],
+        [class*="Tidio"],
+        iframe[src*="tidio"],
+        iframe[src*="code.tidio.co"],
+        /* Tidio widget button (from dev tools) */
+        #button-body,
+        [id="button-body"],
+        button[id="button-body"],
+        [data-testid="widgetButtonBody"],
+        button[data-testid="widgetButtonBody"],
+        /* Tidio containers */
+        #tidio-chat,
+        #tidio-chat-container,
+        [id*="tidio-chat"],
+        [class*="tidio-chat"],
+        [data-tidio],
+        [data-tidio-id] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            z-index: -9999 !important;
+        }
+        .icon-bar,
+        .navbar-toggle {
+            display: none !important;
+            visibility: hidden !important;
+        }
     </style>
-    <script src="//code.tidio.co/y6omcxkigngkhz3s2hwdrpuih7cf97ar.js" async></script>
+    {{-- Chat widget disabled temporarily --}}
+    {{-- <script src="//code.tidio.co/y6omcxkigngkhz3s2hwdrpuih7cf97ar.js" async></script> --}}
+    
+    <!-- CRITICAL: Block Tidio IMMEDIATELY - Must be first script -->
+    <script>
+        (function() {
+            'use strict';
+            // Block Tidio API immediately
+            try {
+                Object.defineProperty(window, 'tidioChatApi', {value: undefined, writable: false, configurable: false});
+            } catch(e) {}
+            
+            // Block script creation BEFORE any other scripts run
+            var origCreateElement = document.createElement;
+            document.createElement = function(tag) {
+                var el = origCreateElement.call(document, tag);
+                if (tag.toLowerCase() === 'script') {
+                    var origSetAttr = el.setAttribute;
+                    var origSetAttrNS = el.setAttributeNS;
+                    el.setAttribute = function(name, value) {
+                        if (name === 'src' && typeof value === 'string' && (value.indexOf('tidio') !== -1 || value.indexOf('code.tidio.co') !== -1)) {
+                            return; // Block Tidio
+                        }
+                        return origSetAttr.call(this, name, value);
+                    };
+                    el.setAttributeNS = function(ns, name, value) {
+                        if (name === 'src' && typeof value === 'string' && (value.indexOf('tidio') !== -1 || value.indexOf('code.tidio.co') !== -1)) {
+                            return; // Block Tidio
+                        }
+                        return origSetAttrNS.call(this, ns, name, value);
+                    };
+                }
+                return el;
+            };
+            
+            // Hide Tidio elements aggressively - COMPREHENSIVE
+            var hide = function() {
+                var selectors = [
+                    '[id*="tidio"]', '[id*="Tidio"]',
+                    '[class*="tidio"]', '[class*="Tidio"]',
+                    'iframe[src*="tidio"]', 'iframe[src*="Tidio"]', 'iframe[src*="code.tidio.co"]',
+                    '#tidio-chat-iframe', '.tidio-chat', '.tidio-chat-button',
+                    // Tidio widget button (from dev tools - id="button-body")
+                    '#button-body',
+                    '[id="button-body"]',
+                    'button[id="button-body"]',
+                    '[data-testid="widgetButtonBody"]',
+                    'button[data-testid="widgetButtonBody"]',
+                    // Tidio containers
+                    '#tidio-chat',
+                    '#tidio-chat-container',
+                    '[id*="tidio-chat"]',
+                    '[class*="tidio-chat"]',
+                    '[data-tidio]',
+                    '[data-tidio-id]'
+                ];
+                selectors.forEach(function(sel) {
+                    try {
+                        document.querySelectorAll(sel).forEach(function(el) {
+                            el.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; width: 0 !important; height: 0 !important;';
+                            el.remove();
+                        });
+                    } catch(e) {}
+                });
+            };
+            hide();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hide);
+            }
+            window.addEventListener('load', hide);
+            setInterval(hide, 100); // Check every 100ms
+        })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-413PKVHE59"></script>
     <script>
@@ -111,12 +223,13 @@
                                             <img src="{{ asset('assets/images/logos/draggify_black.png') }}" alt="Logo" title="Logo">
                                         </a>
                                     </div>
-                                    <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
+                                    {{-- Mobile menu toggle (icon-bar) disabled temporarily --}}
+                                    {{-- <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
                                         data-bs-target=".navbar-collapse">
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
-                                    </button>
+                                    </button> --}}
                                 </div>
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">

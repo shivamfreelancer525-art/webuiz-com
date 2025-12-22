@@ -8,7 +8,12 @@
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 30px;
-  color: #696969; /* --base-color from webuiz */
+  color: #696969; /* --base-color from webuiz - light mode */
+}
+
+/* Dark mode text colors */
+.dark .custom-page-body {
+  color: rgb(var(--be-foreground-base) / var(--be-text-main-opacity)); /* Theme-aware text color */
 }
 
 .custom-page-body h4 {
@@ -17,8 +22,18 @@
   line-height: 1.4; /* Exact webuiz h4 line-height */
   margin-top: 0;
   margin-bottom: 1rem;
-  color: #001726; /* --heading-color from webuiz */
+  color: #001726; /* --heading-color from webuiz - light mode */
   font-family: 'Work Sans', sans-serif; /* --heading-font from webuiz */
+}
+
+/* Dark mode heading colors - use primary color for better visibility */
+.dark .custom-page-body h1,
+.dark .custom-page-body h2,
+.dark .custom-page-body h3,
+.dark .custom-page-body h4,
+.dark .custom-page-body h5,
+.dark .custom-page-body h6 {
+  color: rgb(var(--be-primary)); /* Use primary blue color in dark mode for headings */
 }
 
 .custom-page-body h4:first-of-type {
@@ -28,10 +43,15 @@
 .custom-page-body p {
   font-size: 16px; /* Match webuiz body font size */
   line-height: 30px; /* Match webuiz body line-height */
-  color: #696969; /* --base-color from webuiz */
+  color: #696969; /* --base-color from webuiz - light mode */
   margin-bottom: 1rem;
   margin-top: 0;
   font-family: 'Inter', sans-serif; /* --base-font from webuiz */
+}
+
+/* Dark mode paragraph colors */
+.dark .custom-page-body p {
+  color: rgb(var(--be-foreground-base) / var(--be-text-main-opacity)); /* Theme-aware text color */
 }
 
 .custom-page-body p:first-child {
@@ -49,11 +69,16 @@
 .custom-page-body ul li {
   font-size: 16px; /* Match webuiz body font size */
   line-height: 30px; /* Match webuiz body line-height */
-  color: #696969; /* --base-color from webuiz */
+  color: #696969; /* --base-color from webuiz - light mode */
   margin-bottom: 0.75rem;
   margin-top: 0;
   padding-left: 0;
   font-family: 'Inter', sans-serif; /* --base-font from webuiz */
+}
+
+/* Dark mode list item colors */
+.dark .custom-page-body ul li {
+  color: rgb(var(--be-foreground-base) / var(--be-text-main-opacity)); /* Theme-aware text color */
 }
 
 .custom-page-body ul li::before {
@@ -63,14 +88,24 @@
 .custom-page-body ul li p {
   font-size: 16px;
   line-height: 30px;
-  color: #696969;
+  color: #696969; /* Light mode */
   margin-bottom: 0.5rem;
   margin-top: 0;
   font-family: 'Inter', sans-serif;
 }
 
+/* Dark mode list paragraph colors */
+.dark .custom-page-body ul li p {
+  color: rgb(var(--be-foreground-base) / var(--be-text-main-opacity)); /* Theme-aware text color */
+}
+
 .custom-page-body strong {
   font-weight: 600;
-  color: #696969; /* Match webuiz - bold terms use same color as body text */
+  color: #696969; /* Match webuiz - bold terms use same color as body text - light mode */
   font-family: 'Inter', sans-serif; /* Use body font family */
+}
+
+/* Dark mode strong/bold colors */
+.dark .custom-page-body strong {
+  color: rgb(var(--be-foreground-base) / var(--be-text-main-opacity)); /* Theme-aware text color */
 }

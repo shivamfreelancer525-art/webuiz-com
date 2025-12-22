@@ -132,3 +132,55 @@
 .prose li > p {
   margin: 0;
 }
+
+/* Disable chat widget and icon-bar globally - COMPREHENSIVE */
+/* Tidio-specific */
+#tidio-chat-iframe,
+.tidio-chat,
+.tidio-chat-button,
+[id*="tidio"],
+[id*="Tidio"],
+[class*="tidio"],
+[class*="Tidio"],
+iframe[src*="tidio"],
+iframe[src*="code.tidio.co"],
+div[id*="tidio"],
+div[class*="tidio"],
+button[id*="tidio"],
+button[class*="tidio"],
+a[id*="tidio"],
+a[class*="tidio"],
+span[id*="tidio"],
+span[class*="tidio"],
+*[id*="tidio"],
+*[class*="tidio"],
+/* Tidio widget button (from dev tools - id="button-body") */
+#button-body,
+[id="button-body"],
+button[id="button-body"],
+[data-testid="widgetButtonBody"],
+button[data-testid="widgetButtonBody"],
+/* Tidio containers */
+#tidio-chat,
+#tidio-chat-container,
+[id*="tidio-chat"],
+[class*="tidio-chat"],
+[data-tidio],
+[data-tidio-id] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  z-index: -9999 !important;
+}
+
+.icon-bar,
+.navbar-toggle {
+  display: none !important;
+  visibility: hidden !important;
+}

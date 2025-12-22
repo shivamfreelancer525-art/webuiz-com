@@ -52,7 +52,7 @@
                  <div class="col-xl-4 col-lg-6">
                      <div class="copyright-text pt-10 text-lg-start text-center" data-aos="fade-left"
                          data-aos-duration="1500" data-aos-offset="50">
-                         <p>Copyright © 2024, Draggify.com. All Rights Reserved.</p>
+                         <p>Copyright © 2025, Draggify.com. All Rights Reserved.</p>
                      </div>
                  </div>
                  <div class="col-xl-8 col-lg-6">
@@ -79,7 +79,48 @@
  <script src="assets/js/skill.bars.jquery.min.js"></script>
  <script src="assets/js/isotope.pkgd.min.js"></script>
  <script src="assets/js/aos.js"></script>
- <script src="assets/js/script.js"></script>
- </body>
+<script src="assets/js/script.js"></script>
+<script>
+    // Final cleanup: Remove any Tidio elements that loaded - COMPREHENSIVE
+    (function() {
+        var observer = new MutationObserver(function() {
+            var selectors = [
+                '[id*="tidio"]', '[id*="Tidio"]',
+                '[class*="tidio"]', '[class*="Tidio"]',
+                'iframe[src*="tidio"]', 'iframe[src*="code.tidio.co"]',
+                // Tidio widget button (from dev tools - id="button-body")
+                '#button-body',
+                '[id="button-body"]',
+                'button[id="button-body"]',
+                '[data-testid="widgetButtonBody"]',
+                'button[data-testid="widgetButtonBody"]',
+                // Tidio containers
+                '#tidio-chat',
+                '#tidio-chat-container',
+                '[id*="tidio-chat"]',
+                '[class*="tidio-chat"]',
+                '[data-tidio]',
+                '[data-tidio-id]'
+            ];
+            selectors.forEach(function(sel) {
+                try {
+                    document.querySelectorAll(sel).forEach(function(el) {
+                        el.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; width: 0 !important; height: 0 !important;';
+                        el.remove();
+                    });
+                } catch(e) {}
+            });
+        });
+        if (document.body) {
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['id', 'class', 'data-testid']
+            });
+        }
+    })();
+</script>
+</body>
 
- </html>
+</html>

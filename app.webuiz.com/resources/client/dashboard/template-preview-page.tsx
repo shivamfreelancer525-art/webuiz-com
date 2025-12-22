@@ -14,6 +14,7 @@ import {NewProjectDialog} from '@app/projects/new-project-dialog';
 import {useTemplate} from '@app/templates/use-template';
 import {BuilderTemplate} from '@app/templates/builder-template';
 import {FullPageLoader} from '@common/ui/progress/full-page-loader';
+import {useIsDarkMode} from '@common/ui/themes/use-is-dark-mode';
 
 export function TemplatePreviewPage() {
   const {base_url} = useSettings();
@@ -64,9 +65,10 @@ function Header({
   onBreakpointChange,
   template,
 }: HeaderProps) {
+  const isDarkMode = useIsDarkMode();
   return (
     <header className="flex min-w-0 items-center gap-12 overflow-hidden bg px-12 py-16 shadow-[0,2px,18px,0,rgba(129,162,182,.2)] md:px-32">
-      <Logo color="bg" logoColor="dark" className="max-md:hidden" />
+      <Logo color="bg" logoColor="dark" isDarkMode={isDarkMode} className="max-md:hidden" />
       <Button
         startIcon={<KeyboardBackspaceIcon />}
         elementType={Link}

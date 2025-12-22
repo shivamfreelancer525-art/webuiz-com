@@ -23,7 +23,7 @@ export function CustomPageBody({page}: CustomPageBodyProps) {
       <>
         {/* Hero section matching webuiz */}
         <section 
-          className="bg-primary-light/10 pt-[130px] pb-24 md:pt-[150px] md:pb-24" 
+          className="bg-primary-light/10 dark:bg-primary-light/5 pt-[130px] pb-24 md:pt-[150px] md:pb-24" 
           style={{
             backgroundImage: 'url(/assets/images/hero/hero-three-bg.png)',
             backgroundSize: 'cover',
@@ -33,7 +33,7 @@ export function CustomPageBody({page}: CustomPageBodyProps) {
           <div className="container mx-auto px-14 md:px-40">
             <div className="text-center pt-16 md:pt-16 pb-16 md:pb-16 flex items-center justify-center">
               <h1 
-                className="text-4xl md:text-5xl font-bold mb-0 text-dark text-center" 
+                className="text-4xl md:text-5xl font-bold mb-0 text-main text-center" 
                 data-aos="fade-up" 
                 data-aos-duration="1500" 
                 data-aos-offset="50"
