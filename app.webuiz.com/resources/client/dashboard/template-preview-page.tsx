@@ -46,9 +46,12 @@ export function TemplatePreviewPage() {
                 : 'h-full w-full',
             )}
             src={`${base_url}/templates/preview/${data.template.name}`}
+            title={`Preview of ${data.template.name} template`}
           />
         ) : (
           <FullPageLoader />
+
+          
         )}
       </div>
     </div>

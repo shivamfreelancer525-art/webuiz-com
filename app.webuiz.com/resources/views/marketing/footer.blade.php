@@ -5,10 +5,11 @@
                  <div class="col-xl-6 col-lg-7">
                      <div class="footer-widget widget-about" data-aos="fade-up" data-aos-duration="1500"
                          data-aos-offset="50">
-                         <div class="section-title text-white">
-                             <h2>Create Stunning Websites Effortlessly</h2>
-                             <p>No credit card requirement it's free for a month</p>
-                         </div>
+                        <div class="section-title text-white">
+                            <h2>Create Stunning Websites Effortlessly</h2>
+                            {{-- Disabled: No credit card requirement it's free for a month --}}
+                            {{-- <p>No credit card requirement it's free for a month</p> --}}
+                        </div>
                          <div class="footer-btns">
                              <a href="{{ url('/login') }}" class="theme-btn style-three">Login</a>
                              <a href="{{ url('/register') }}" class="theme-btn">Register <i
