@@ -26,6 +26,19 @@ export default defineConfig({
     hmr: {
       host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost',
     },
+    watch: {
+      ignored: [
+        '**/node_modules/**',
+        '**/vendor/**',
+        '**/.git/**',
+        '**/public/build/**',
+        '**/storage/**',
+        '**/bootstrap/cache/**',
+        '**/database/**',
+        '**/tests/**',
+        '**/logs/**',
+      ],
+    },
   },
   base: '',
   resolve: {

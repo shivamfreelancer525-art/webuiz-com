@@ -383,11 +383,42 @@ abstract class BaseUser extends BaseModel implements
 
         $subscription = $this->subscriptions->first();
 
-        if ($subscription && $subscription->valid()) {
-            return $subscription->product;
-        } else {
+        if (!$subscription) {
             return Product::where('free', true)->first();
         }
+
+        // Check subscription status directly (as per Stripe docs)
+        // ALLOW access if status is: active, trialing
+        // BLOCK access if status is: unpaid, canceled, past_due
+        if ($subscription->gateway_name === 'stripe') {
+            $status = strtolower($subscription->gateway_status ?? '');
+            
+            // Block access for unpaid, canceled, or past_due subscriptions
+            // past_due means payment failed, so user should be blocked
+            if ($status === 'unpaid' || $status === 'canceled' || $status === 'cancelled' || $status === 'past_due') {
+                return Product::where('free', true)->first();
+            }
+            
+            // Allow access for active or trialing subscriptions
+            // Only check subscription status, not invoices (status is source of truth)
+            if ($status === 'active' || $status === 'trialing') {
+                return $subscription->product;
+            }
+            
+            // For other statuses (incomplete, incomplete_expired), 
+            // use existing valid() check as fallback
+            if ($subscription->valid()) {
+                return $subscription->product;
+            }
+        } else {
+            // For non-Stripe subscriptions (PayPal, etc.), use existing logic
+            // Only check subscription validity, not invoices
+            if ($subscription->valid()) {
+                return $subscription->product;
+            }
+        }
+
+        return Product::where('free', true)->first();
     }
 
     public function scopeCompact(Builder $query): Builder
