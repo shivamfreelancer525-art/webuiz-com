@@ -9,7 +9,9 @@ import {DatatableDataQueryKey} from '@common/datatable/requests/paginated-resour
 import {CustomDomain} from '@common/custom-domains/custom-domain';
 
 interface Response extends BackendResponse {
-  domain: CustomDomain;
+  domain: CustomDomain | null;
+  pending?: boolean;
+  message?: string;
 }
 
 interface Payload {
@@ -23,13 +25,23 @@ export function useConnectDomain() {
   return useMutation({
     mutationFn: (props: Payload) => connectDomain(props),
     onSuccess: response => {
-      toast.positive(
-        trans(
-          message('“:domain” connected', {
-            values: {domain: response.domain.host},
-          }),
-        ),
-      );
+      if (response.pending) {
+        // Domain added to queue
+        toast.positive(
+          trans(
+            response.message || message('Domain added to validation queue. Please wait up to 60 minutes.'),
+          ),
+        );
+      } else if (response.domain) {
+        // Domain validated immediately
+        toast.positive(
+          trans(
+            message('":domain" connected', {
+              values: {domain: response.domain.host},
+            }),
+          ),
+        );
+      }
       queryClient.invalidateQueries({
         queryKey: DatatableDataQueryKey('custom-domain'),
       });

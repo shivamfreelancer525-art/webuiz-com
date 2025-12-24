@@ -16,6 +16,11 @@ class Kernel extends ConsoleKernel
         if (config('common.site.demo')) {
             $schedule->command(ResetDemoSite::class)->cron('0 */2 * * *');
         }
+
+        // Validate pending custom domains every 10 minutes
+        $schedule->command('custom-domains:validate-pending')
+            ->everyTenMinutes()
+            ->withoutOverlapping();
     }
 
     /**

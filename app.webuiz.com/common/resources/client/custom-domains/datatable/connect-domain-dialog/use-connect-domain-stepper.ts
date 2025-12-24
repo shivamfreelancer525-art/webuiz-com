@@ -132,20 +132,36 @@ export function useConnectDomainStepper({
     ) {
       startLoading();
       const validationResult = await handleDomainValidation();
-      const nextStep =
-        validationResult.status === 'success'
-          ? ConnectDomainStep.Finalize
-          : ConnectDomainStep.ValidationFailed;
-      setState({
-        ...state,
-        ...validationResult.newState,
-        isLoading: false,
-        currentStep: nextStep,
-      });
-      if (nextStep === ConnectDomainStep.Finalize) {
+      
+      if (validationResult.status === 'success') {
+        // Validation passed, proceed to finalize
+        setState({
+          ...state,
+          ...validationResult.newState,
+          isLoading: false,
+          currentStep: ConnectDomainStep.Finalize,
+        });
         connectDomain.mutate(form.getValues(), {
           onSettled: response => {
             close(response?.domain);
+          },
+        });
+      } else {
+        // Validation failed, add to queue and close dialog
+        setState({
+          ...state,
+          ...validationResult.newState,
+          isLoading: false,
+          currentStep: ConnectDomainStep.ValidationFailed,
+        });
+        
+        // Add to queue (domain will be added even if validation fails)
+        connectDomain.mutate(form.getValues(), {
+          onSettled: () => {
+            // Close dialog after adding to queue
+            setTimeout(() => {
+              close();
+            }, 2000); // Show message for 2 seconds then close
           },
         });
       }

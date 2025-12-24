@@ -9,6 +9,7 @@ use Common\Core\BaseController;
 use Common\Core\Exceptions\AccessResponseWithAction;
 use Common\Database\Datasource\Datasource;
 use Common\Domains\Actions\DeleteCustomDomains;
+use Common\Domains\PendingCustomDomain;
 use Common\Domains\Validation\HostIsNotBlacklisted;
 use Exception;
 use Illuminate\Http\Client\ConnectionException;
@@ -113,18 +114,42 @@ class CustomDomainController extends BaseController
                 'string',
                 'max:100',
                 Rule::unique('custom_domains'),
+                Rule::unique('custom_domain_queue')->where(function ($query) {
+                    return $query->where('user_id', Auth::id())
+                                 ->whereIn('status', ['pending', 'validating']);
+                }),
                 new HostIsNotBlacklisted(),
             ],
             'global' => 'boolean',
         ]);
 
-        $domain = $this->customDomain->create([
+        // Check if user has any pending validations
+        $hasPendingValidation = PendingCustomDomain::where('user_id', Auth::id())
+            ->whereIn('status', ['pending', 'validating'])
+            ->exists();
+
+        if ($hasPendingValidation) {
+            return $this->error(
+                __('You have a domain validation in progress. Please wait for it to complete before adding another domain.'),
+                [],
+                403
+            );
+        }
+
+        // Add to queue instead of creating directly
+        $pendingDomain = PendingCustomDomain::create([
             'host' => $this->request->get('host'),
             'user_id' => Auth::id(),
-            'global' => $this->request->get('global', false),
+            'server_ip' => $this->getServerIp(),
+            'status' => 'pending',
+            'validation_attempts' => 0,
         ]);
 
-        return $this->success(['domain' => $domain]);
+        return $this->success([
+            'domain' => null,
+            'pending' => true,
+            'message' => __('Domain added to validation queue. Please wait up to 60 minutes for validation to complete.'),
+        ]);
     }
 
     public function update(CustomDomain $customDomain)
@@ -181,6 +206,19 @@ class CustomDomainController extends BaseController
                 [],
                 403,
                 $upgradeAction ? ['action' => $upgradeAction] : []
+            );
+        }
+
+        // Check if user has any pending validations
+        $hasPendingValidation = PendingCustomDomain::where('user_id', $user->id)
+            ->whereIn('status', ['pending', 'validating'])
+            ->exists();
+
+        if ($hasPendingValidation) {
+            return $this->error(
+                __('You have a domain validation in progress. Please wait for it to complete before adding another domain.'),
+                [],
+                403
             );
         }
         
@@ -311,8 +349,10 @@ class CustomDomainController extends BaseController
             $failReason = 'serverNotConfigured';
         }
 
+        // Instead of returning error, return special response to trigger queue addition
         return $this->error(__('Could not validate domain.'), [], 422, [
             'failReason' => $failReason,
+            'queueDomain' => true, // Signal frontend to add to queue
         ]);
     }
 
