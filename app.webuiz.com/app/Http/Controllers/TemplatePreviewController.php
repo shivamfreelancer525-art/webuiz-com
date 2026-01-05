@@ -63,11 +63,73 @@ class TemplatePreviewController
                     }
                 }
 
+                // Fix for navigation links in preview mode: Prevent hash-based links from causing 404s
+                // This intercepts links like href="#about", href="#contact" and handles them within the iframe
+                $navigationFixScript = <<<'SCRIPT'
+<script>
+(function() {
+    function fixNavigationLinks() {
+        // Find all anchor links with hash-based hrefs (e.g., #about, #contact, #projects)
+        var links = document.querySelectorAll("a[href^='#']");
+        
+        links.forEach(function(link) {
+            // Skip if already processed or if it's an empty hash
+            if (link.dataset.previewFixed === "true" || link.getAttribute("href") === "#") {
+                return;
+            }
+            
+            link.dataset.previewFixed = "true";
+            
+            // Prevent default navigation and handle smooth scrolling within iframe
+            link.addEventListener("click", function(e) {
+                var href = link.getAttribute("href");
+                
+                // Only handle hash links (starting with #)
+                if (href && href.startsWith("#") && href.length > 1) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    var targetId = href.substring(1); // Remove the #
+                    var targetElement = document.getElementById(targetId) || document.querySelector("[name='" + targetId + "']");
+                    
+                    if (targetElement) {
+                        // Smooth scroll to target element within iframe
+                        targetElement.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                        
+                        // Also trigger any existing scroll handlers (for templates with smooth scroll libraries)
+                        if (typeof jQuery !== "undefined" && typeof jQuery.fn.scrollTo !== "undefined") {
+                            jQuery("html, body").animate({
+                                scrollTop: jQuery(targetElement).offset().top - 100
+                            }, 500);
+                        }
+                    }
+                }
+            }, true); // Use capture phase to intercept early
+        });
+    }
+    
+    // Run immediately if DOM is ready, otherwise wait
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", fixNavigationLinks);
+    } else {
+        fixNavigationLinks();
+    }
+    
+    // Also run after a short delay to catch dynamically added links
+    setTimeout(fixNavigationLinks, 500);
+})();
+</script>
+SCRIPT;
+
                 // Fix for templates with preloader: Hide preloader immediately to prevent loading spinner
                 // This is needed because window.onload might not fire correctly in iframes
+                $preloaderFixScript = '';
                 if (strpos($page['html'], 'id="preloader"') !== false || strpos($page['html'], "id='preloader'") !== false) {
                     // Inject script to hide preloader immediately after DOM loads
-                    $preloaderFixScript = '
+                    $preloaderFixScript = <<<'SCRIPT'
 <script>
 (function() {
     // Hide preloader immediately on DOMContentLoaded (faster than window.onload)
@@ -99,33 +161,37 @@ class TemplatePreviewController
         }
     }
 })();
-</script>';
-                    
-                    // Insert script before closing </body> tag, or before first script tag, or at end of head
-                    if (preg_match('/<\/body>/i', $page['html'])) {
+</script>
+SCRIPT;
+                }
+                
+                // Combine both scripts
+                $combinedScript = $navigationFixScript . $preloaderFixScript;
+                
+                // Insert scripts before closing </body> tag, or before first script tag, or at end of head
+                if (preg_match('/<\/body>/i', $page['html'])) {
+                    $page['html'] = preg_replace(
+                        '/(<\/body>)/i',
+                        $combinedScript . "\n$1",
+                        $page['html'],
+                        1,
+                    );
+                } else if (preg_match('/<script/i', $page['html'])) {
+                    $page['html'] = preg_replace(
+                        '/(<script[^>]*>)/i',
+                        $combinedScript . "\n$1",
+                        $page['html'],
+                        1,
+                    );
+                } else {
+                    // Insert before closing </head> or at end of head
+                    if (preg_match('/<\/head>/i', $page['html'])) {
                         $page['html'] = preg_replace(
-                            '/(<\/body>)/i',
-                            $preloaderFixScript . "\n$1",
+                            '/(<\/head>)/i',
+                            $combinedScript . "\n$1",
                             $page['html'],
                             1,
                         );
-                    } else if (preg_match('/<script/i', $page['html'])) {
-                        $page['html'] = preg_replace(
-                            '/(<script[^>]*>)/i',
-                            $preloaderFixScript . "\n$1",
-                            $page['html'],
-                            1,
-                        );
-                    } else {
-                        // Insert before closing </head> or at end of head
-                        if (preg_match('/<\/head>/i', $page['html'])) {
-                            $page['html'] = preg_replace(
-                                '/(<\/head>)/i',
-                                $preloaderFixScript . "\n$1",
-                                $page['html'],
-                                1,
-                            );
-                        }
                     }
                 }
 

@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function Footer({className, padding}: Props) {
-  const year = new Date().getFullYear();
+  const year = 2025;
   const {branding} = useSettings();
   return (
     <footer
