@@ -1,28 +1,28 @@
-import {useSettings} from '@common/core/settings/use-settings';
-import {Link, useParams} from 'react-router-dom';
-import {Button} from '@common/ui/buttons/button';
-import {Trans} from '@common/i18n/trans';
-import {KeyboardBackspaceIcon} from '@common/icons/material/KeyboardBackspace';
-import {Logo} from '@common/ui/navigation/navbar/logo';
-import {IconButton} from '@common/ui/buttons/icon-button';
-import {PhoneIphoneIcon} from '@common/icons/material/PhoneIphone';
-import {DesktopMacIcon} from '@common/icons/material/DesktopMac';
-import {useState} from 'react';
+import { useSettings } from '@common/core/settings/use-settings';
+import { Link, useParams } from 'react-router-dom';
+import { Button } from '@common/ui/buttons/button';
+import { Trans } from '@common/i18n/trans';
+import { KeyboardBackspaceIcon } from '@common/icons/material/KeyboardBackspace';
+import { Logo } from '@common/ui/navigation/navbar/logo';
+import { IconButton } from '@common/ui/buttons/icon-button';
+import { PhoneIphoneIcon } from '@common/icons/material/PhoneIphone';
+import { DesktopMacIcon } from '@common/icons/material/DesktopMac';
+import { useState } from 'react';
 import clsx from 'clsx';
-import {DialogTrigger} from '@common/ui/overlays/dialog/dialog-trigger';
-import {NewProjectDialog} from '@app/projects/new-project-dialog';
-import {useTemplate} from '@app/templates/use-template';
-import {BuilderTemplate} from '@app/templates/builder-template';
-import {FullPageLoader} from '@common/ui/progress/full-page-loader';
-import {useIsDarkMode} from '@common/ui/themes/use-is-dark-mode';
+import { DialogTrigger } from '@common/ui/overlays/dialog/dialog-trigger';
+import { NewProjectDialog } from '@app/projects/new-project-dialog';
+import { useTemplate } from '@app/templates/use-template';
+import { BuilderTemplate } from '@app/templates/builder-template';
+import { FullPageLoader } from '@common/ui/progress/full-page-loader';
+import { useIsDarkMode } from '@common/ui/themes/use-is-dark-mode';
 
 export function TemplatePreviewPage() {
-  const {base_url} = useSettings();
-  const {name} = useParams();
+  const { base_url } = useSettings();
+  const { name } = useParams();
   const [selectedBreakpoint, setSelectedBreakpoint] = useState<
     'mobile' | 'desktop'
   >('desktop');
-  const {data} = useTemplate(name!);
+  const { data } = useTemplate(name!);
 
   return (
     <div className="flex h-screen w-screen flex-col">
@@ -51,7 +51,7 @@ export function TemplatePreviewPage() {
         ) : (
           <FullPageLoader />
 
-          
+
         )}
       </div>
     </div>
@@ -70,34 +70,43 @@ function Header({
 }: HeaderProps) {
   const isDarkMode = useIsDarkMode();
   return (
-    <header className="flex min-w-0 items-center gap-12 overflow-hidden bg px-12 py-16 shadow-[0,2px,18px,0,rgba(129,162,182,.2)] md:px-32">
-      <Logo color="bg" logoColor="dark" isDarkMode={isDarkMode} className="max-md:hidden" />
+    <header className="flex min-w-0 items-center gap-12 bg px-12 py-16 shadow-[0,2px,18px,0,rgba(129,162,182,.2)] md:px-32">
+      {/* Left section */}
+      <Logo color="bg" logoColor="dark" isDarkMode={isDarkMode} className="flex-shrink-0 max-md:hidden" />
       <Button
         startIcon={<KeyboardBackspaceIcon />}
         elementType={Link}
         to="/dashboard/templates"
+        className="flex-shrink-0 max-md:text-xs"
       >
         <Trans message="Back to templates" />
       </Button>
-      <IconButton
-        className="ml-auto max-md:hidden"
-        color={selectedBreakpoint === 'mobile' ? 'primary' : undefined}
-        onClick={() => onBreakpointChange('mobile')}
-      >
-        <PhoneIphoneIcon />
-      </IconButton>
-      <IconButton
-        className="max-md:hidden"
-        color={selectedBreakpoint === 'desktop' ? 'primary' : undefined}
-        onClick={() => onBreakpointChange('desktop')}
-      >
-        <DesktopMacIcon />
-      </IconButton>
+
+      {/* Center section - Device toggle icons */}
+      <div className="flex flex-1 items-center justify-center gap-4 max-md:hidden">
+        <IconButton
+          color={selectedBreakpoint === 'mobile' ? 'primary' : undefined}
+          onClick={() => onBreakpointChange('mobile')}
+        >
+          <PhoneIphoneIcon />
+        </IconButton>
+        <IconButton
+          color={selectedBreakpoint === 'desktop' ? 'primary' : undefined}
+          onClick={() => onBreakpointChange('desktop')}
+        >
+          <DesktopMacIcon />
+        </IconButton>
+      </div>
+
+      {/* Spacer for mobile when icons are hidden */}
+      <div className="flex-1 md:hidden" />
+
+      {/* Right section */}
       <DialogTrigger type="modal">
         <Button
           variant="flat"
           color="primary"
-          className="ml-auto"
+          className="flex-shrink-0 max-md:text-xs max-md:px-8"
           disabled={!template}
         >
           <Trans message="Use this template" />
