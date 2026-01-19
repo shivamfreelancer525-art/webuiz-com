@@ -1,59 +1,59 @@
-import {useProjects} from '@app/dashboard/use-projects';
-import {useAuth} from '@common/auth/use-auth';
+import { useProjects } from '@app/dashboard/use-projects';
+import { useAuth } from '@common/auth/use-auth';
 import {
   getProjectImageUrl,
   getProjectPreviewUrl,
   ProjectLink,
 } from '@app/projects/project-link';
-import {FormattedRelativeTime} from '@common/i18n/formatted-relative-time';
-import {IconButton} from '@common/ui/buttons/icon-button';
-import {MoreVertIcon} from '@common/icons/material/MoreVert';
-import {InfiniteScrollSentinel} from '@common/ui/infinite-scroll/infinite-scroll-sentinel';
-import {Button} from '@common/ui/buttons/button';
-import {Trans} from '@common/i18n/trans';
-import {KeyboardArrowRightIcon} from '@common/icons/material/KeyboardArrowRight';
-import {Link} from 'react-router-dom';
-import {Menu, MenuTrigger} from '@common/ui/navigation/menu/menu-trigger';
-import {Item} from '@common/ui/forms/listbox/item';
-import {Project} from '@app/dashboard/project';
-import {ConfirmationDialog} from '@common/ui/overlays/dialog/confirmation-dialog';
-import React, {Fragment, ReactNode, useState} from 'react';
-import {useDeleteProject} from '@app/projects/use-delete-project';
-import {DialogTrigger} from '@common/ui/overlays/dialog/dialog-trigger';
-import {openDialog} from '@common/ui/overlays/store/dialog-store';
-import {ProjectSettingsDialog} from '@app/projects/project-settings-dialog/project-settings-dialog';
-import {AddIcon} from '@common/icons/material/Add';
-import {TextField} from '@common/ui/forms/input-field/text-field/text-field';
-import {useTrans} from '@common/i18n/use-trans';
-import {message} from '@common/i18n/message';
-import {SearchIcon} from '@common/icons/material/Search';
-import {KeyboardArrowDownIcon} from '@common/icons/material/KeyboardArrowDown';
-import {Footer} from '@common/ui/footer/footer';
-import {Skeleton} from '@common/ui/skeleton/skeleton';
-import {AnimatePresence, m} from 'framer-motion';
-import {opacityAnimation} from '@common/ui/animation/opacity-animation';
-import {IllustratedMessage} from '@common/ui/images/illustrated-message';
-import {SvgImage} from '@common/ui/images/svg-image/svg-image';
+import { FormattedRelativeTime } from '@common/i18n/formatted-relative-time';
+import { IconButton } from '@common/ui/buttons/icon-button';
+import { MoreVertIcon } from '@common/icons/material/MoreVert';
+import { InfiniteScrollSentinel } from '@common/ui/infinite-scroll/infinite-scroll-sentinel';
+import { Button } from '@common/ui/buttons/button';
+import { Trans } from '@common/i18n/trans';
+import { KeyboardArrowRightIcon } from '@common/icons/material/KeyboardArrowRight';
+import { Link } from 'react-router-dom';
+import { Menu, MenuTrigger } from '@common/ui/navigation/menu/menu-trigger';
+import { Item } from '@common/ui/forms/listbox/item';
+import { Project } from '@app/dashboard/project';
+import { ConfirmationDialog } from '@common/ui/overlays/dialog/confirmation-dialog';
+import React, { Fragment, ReactNode, useState } from 'react';
+import { useDeleteProject } from '@app/projects/use-delete-project';
+import { DialogTrigger } from '@common/ui/overlays/dialog/dialog-trigger';
+import { openDialog } from '@common/ui/overlays/store/dialog-store';
+import { ProjectSettingsDialog } from '@app/projects/project-settings-dialog/project-settings-dialog';
+import { AddIcon } from '@common/icons/material/Add';
+import { TextField } from '@common/ui/forms/input-field/text-field/text-field';
+import { useTrans } from '@common/i18n/use-trans';
+import { message } from '@common/i18n/message';
+import { SearchIcon } from '@common/icons/material/Search';
+import { KeyboardArrowDownIcon } from '@common/icons/material/KeyboardArrowDown';
+import { Footer } from '@common/ui/footer/footer';
+import { Skeleton } from '@common/ui/skeleton/skeleton';
+import { AnimatePresence, m } from 'framer-motion';
+import { opacityAnimation } from '@common/ui/animation/opacity-animation';
+import { IllustratedMessage } from '@common/ui/images/illustrated-message';
+import { SvgImage } from '@common/ui/images/svg-image/svg-image';
 import builderImage from '@app/templates/website-builder.svg';
-import {DashboardNavbar} from './dashboard-navbar';
-import {DashboardWorkspaceSelector} from '@app/dashboard/dashboard-workspace-selector';
-import {PolicyFailMessage} from '@common/billing/upgrade/policy-fail-message';
-import {useAccountUsage} from '@app/editor/use-account-usage';
-import {AdHost} from '@common/admin/ads/ad-host';
-import {StaticPageTitle} from '@common/seo/static-page-title';
+import { DashboardNavbar } from './dashboard-navbar';
+import { DashboardWorkspaceSelector } from '@app/dashboard/dashboard-workspace-selector';
+import { PolicyFailMessage } from '@common/billing/upgrade/policy-fail-message';
+import { useAccountUsage } from '@app/editor/use-account-usage';
+import { AdHost } from '@common/admin/ads/ad-host';
+import { StaticPageTitle } from '@common/seo/static-page-title';
 
 const SortOptions = [
-  {value: 'created_at|desc', label: message('Date created')},
-  {value: 'name|asc', label: message('Alphabetical')},
-  {value: 'updated_at|desc', label: message('Last updated')},
+  { value: 'created_at|desc', label: message('Date created') },
+  { value: 'name|asc', label: message('Alphabetical') },
+  { value: 'updated_at|desc', label: message('Last updated') },
 ];
 
 export function DashboardPage() {
-  const {data: usage} = useAccountUsage();
-  const {trans} = useTrans();
-  const {user} = useAuth();
-  const query = useProjects({userId: user!.id, paginate: 'lengthAware'});
-  const {sortDescriptor, setSortDescriptor, searchQuery, setSearchQuery} =
+  const { data: usage } = useAccountUsage();
+  const { trans } = useTrans();
+  const { user } = useAuth();
+  const query = useProjects({ userId: user!.id, paginate: 'lengthAware' });
+  const { sortDescriptor, setSortDescriptor, searchQuery, setSearchQuery } =
     query;
   const sortValue = `${sortDescriptor.orderBy}|${sortDescriptor.orderDir}`;
 
@@ -113,6 +113,18 @@ export function DashboardPage() {
             </MenuTrigger>
             <Button
               size="sm"
+              variant="outline"
+              color="primary"
+              elementType={Link}
+              to="ai-generator"
+              className="gap-6"
+              disabled={!usage?.projects.create.allowed}
+            >
+              <span className="text-base">✨</span>
+              <Trans message="AI Generator" />
+            </Button>
+            <Button
+              size="sm"
               variant="flat"
               color="primary"
               elementType={Link}
@@ -139,7 +151,7 @@ interface ProjectGridProps {
   query: ReturnType<typeof useProjects>;
 }
 
-function ProjectGrid({query}: ProjectGridProps) {
+function ProjectGrid({ query }: ProjectGridProps) {
   if (query.data) {
     if (query.noResults) {
       return <NoProjectsMessage isSearching={!!query.searchQuery} />;
@@ -178,8 +190,8 @@ function ProjectGrid({query}: ProjectGridProps) {
                       const url = getProjectPreviewUrl(project);
                       console.log('Original URL:', url);
                       // Ensure URL is absolute
-                      const absoluteUrl = url.startsWith('http://') || url.startsWith('https://') 
-                        ? url 
+                      const absoluteUrl = url.startsWith('http://') || url.startsWith('https://')
+                        ? url
                         : `${window.location.origin}${url.startsWith('/') ? url : '/' + url}`;
                       console.log('Absolute URL:', absoluteUrl);
                       // Always open in new tab
@@ -234,7 +246,7 @@ interface GridLayoutProps {
   animationKey: string;
 }
 
-function GridLayout({children, animationKey}: GridLayoutProps) {
+function GridLayout({ children, animationKey }: GridLayoutProps) {
   return (
     <m.div
       key={animationKey}
@@ -249,7 +261,7 @@ function GridLayout({children, animationKey}: GridLayoutProps) {
 interface NoProjectsMessageProps {
   isSearching: boolean;
 }
-function NoProjectsMessage({isSearching}: NoProjectsMessageProps) {
+function NoProjectsMessage({ isSearching }: NoProjectsMessageProps) {
   return (
     <IllustratedMessage
       className="mt-40"
@@ -269,7 +281,7 @@ function NoProjectsMessage({isSearching}: NoProjectsMessageProps) {
 interface OptionsTriggerProps {
   project: Project;
 }
-function OptionsTrigger({project}: OptionsTriggerProps) {
+function OptionsTrigger({ project }: OptionsTriggerProps) {
   const [deleteDialogIsOpen, setDeleteDialogIsOpen] = useState(false);
 
   return (
@@ -292,7 +304,7 @@ function OptionsTrigger({project}: OptionsTriggerProps) {
           </Item>
           <Item
             value="settings"
-            onSelected={() => openDialog(ProjectSettingsDialog, {project})}
+            onSelected={() => openDialog(ProjectSettingsDialog, { project })}
           >
             <Trans message="Settings" />
           </Item>
@@ -315,7 +327,7 @@ interface DeleteProjectProps {
   isOpen: boolean;
   onClose: () => void;
 }
-function DeleteProjectDialog({projectId, isOpen, onClose}: DeleteProjectProps) {
+function DeleteProjectDialog({ projectId, isOpen, onClose }: DeleteProjectProps) {
   const deleteProject = useDeleteProject();
   return (
     <DialogTrigger type="modal" isOpen={isOpen} onClose={onClose}>
@@ -327,7 +339,7 @@ function DeleteProjectDialog({projectId, isOpen, onClose}: DeleteProjectProps) {
         isLoading={deleteProject.isPending}
         onConfirm={() => {
           deleteProject.mutate(
-            {projectId},
+            { projectId },
             {
               onSuccess: () => {
                 onClose();

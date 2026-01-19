@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountUsageController;
 use App\Http\Controllers\AiController;
 use App\Http\Controllers\ElementsController;
+use Common\AiGenerator\AiProjectGeneratorController;
 use App\Http\Controllers\ExportProjectToFTPController;
 use App\Http\Controllers\ProjectDownloadController;
 use App\Http\Controllers\ProjectsController;
@@ -30,11 +31,17 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('projects/{project}/download', [ProjectDownloadController::class, 'download']);
         Route::post('projects/{project}/settings', ProjectSettingsController::class);
 
-        // api
+        // ai
         Route::post('ai/generate-text', [AiController::class, 'generateText']);
         Route::post('ai/generate-image', [AiController::class, 'generateImage']);
         Route::post('ai/modify-text', [AiController::class, 'modifyText']);
         Route::post('ai/upload-generated-image', [AiController::class, 'uploadGeneratedImage']);
+
+        // ai project generator
+        Route::post('ai/generate-project', [AiProjectGeneratorController::class, 'generate']);
+        Route::post('ai/preview-project', [AiProjectGeneratorController::class, 'preview']);
+        Route::get('ai/project-types', [AiProjectGeneratorController::class, 'projectTypes']);
+        Route::get('ai/providers', [AiProjectGeneratorController::class, 'providers']);
 
         // account
         Route::get('account/usage', AccountUsageController::class);

@@ -1,11 +1,15 @@
-import {Outlet, RouteObject, useRoutes} from 'react-router-dom';
+import { Outlet, RouteObject, useRoutes } from 'react-router-dom';
 import React from 'react';
-import {NotFoundPage} from '@common/ui/not-found-page/not-found-page';
-import {DashboardPage} from '@app/dashboard/dashboard-page';
-import {NewProjectPage} from '@app/dashboard/new-project-page';
-import {CustomDomainsPage} from '@app/dashboard/custom-domains-page';
-import {TemplatePreviewPage} from '@app/dashboard/template-preview-page';
-import {ActiveWorkspaceProvider} from '@common/workspace/active-workspace-id-context';
+import { NotFoundPage } from '@common/ui/not-found-page/not-found-page';
+import { DashboardPage } from '@app/dashboard/dashboard-page';
+import { NewProjectPage } from '@app/dashboard/new-project-page';
+import { CustomDomainsPage } from '@app/dashboard/custom-domains-page';
+import { TemplatePreviewPage } from '@app/dashboard/template-preview-page';
+import { ActiveWorkspaceProvider } from '@common/workspace/active-workspace-id-context';
+
+const AiGeneratorPage = React.lazy(
+  () => import('@app/dashboard/ai-generator/ai-generator-page'),
+);
 
 export default function DashboardRoutes() {
   const DashboardRouteConfig: RouteObject[] = [
@@ -33,7 +37,15 @@ export default function DashboardRoutes() {
           path: '/templates/:name',
           element: <TemplatePreviewPage />,
         },
-        {path: '*', element: <NotFoundPage />},
+        {
+          path: '/ai-generator',
+          element: (
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <AiGeneratorPage />
+            </React.Suspense>
+          ),
+        },
+        { path: '*', element: <NotFoundPage /> },
       ],
     },
   ];

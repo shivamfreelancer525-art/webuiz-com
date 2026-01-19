@@ -30,8 +30,12 @@ class ProjectPolicy extends WorkspacedResourcePolicy
 
     public function download(User $user, Project $project)
     {
-        return $this->hasPermission($user, 'projects.download') &&
-            $project->user_id === $user->id;
+        // Allow download if user owns the project or has download permission
+        // This allows AI-generated project owners to download their own projects
+        if ($project->user_id === $user->id) {
+            return true;
+        }
+        return $this->hasPermission($user, 'projects.download');
     }
 
     public function show(User $currentUser, $resource)
