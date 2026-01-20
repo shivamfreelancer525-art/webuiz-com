@@ -99,7 +99,8 @@ class ProjectRepository
         $projectPath = $this->getProjectPath($project);
 
         if (Arr::get($data, 'slug') && $project->slug !== $data['slug']) {
-            $project->fill(['slug' => $data['slug']])->save();
+            $slug = $this->getUniqueSlug($data['slug'], $project->id);
+            $project->fill(['slug' => $slug])->save();
         }
 
         if (isset($data['pages'])) {
@@ -158,9 +159,12 @@ class ProjectRepository
 
     public function create(array $data): Project
     {
+        $slug = $data['slug'] ?? slugify($data['name']);
+        $slug = $this->getUniqueSlug($slug);
+
         $project = Project::create([
             'name' => $data['name'],
-            'slug' => $data['slug'] ?? slugify($data['name']),
+            'slug' => $slug,
             'template' => $data['templateName'] ?? null,
             'uuid' => Str::random(36),
             'user_id' => $data['userId'] ?? Auth::id(),
@@ -375,5 +379,18 @@ class ProjectRepository
     private function getBuilderAsset(string $path): string
     {
         return Storage::disk('builder')->get($path);
+    }
+
+    private function getUniqueSlug(string $slug, ?int $ignoreId = null): string
+    {
+        $originalSlug = $slug;
+        $i = 1;
+
+        while ($this->project->where('slug', $slug)->where('id', '!=', $ignoreId)->count() > 0) {
+            $slug = "{$originalSlug}-{$i}";
+            $i++;
+        }
+
+        return $slug;
     }
 }
