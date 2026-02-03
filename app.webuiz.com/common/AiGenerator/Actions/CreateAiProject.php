@@ -21,6 +21,14 @@ class CreateAiProject
      */
     public function execute(array $data): array
     {
+        $user = Auth::user();
+        
+        // Check monthly AI project limit
+        $aiUsage = $user->getAiProjectUsage();
+        if ($aiUsage['total'] && $aiUsage['used'] >= $aiUsage['total']) {
+            throw new \RuntimeException('You have reached your monthly AI project limit. Please upgrade your plan or wait until next month.');
+        }
+
         $prompt = $data['prompt'];
         $projectType = $data['type'] ?? 'landing-page';
         $projectName = $data['name'] ?? $this->generateProjectName($prompt);
@@ -30,7 +38,20 @@ class CreateAiProject
         $provider = AiProviderFactory::create($providerName);
 
         // Generate project content using selected provider
-        $generatedContent = $provider->generateProject($prompt, $projectType);
+        try {
+            $generatedContent = $provider->generateProject($prompt, $projectType);
+        } catch (\Exception $e) {
+            // Provide a friendlier error message for common API key issues
+            if (Str::contains($e->getMessage(), ['Incorrect API key', 'invalid_api_key', '401'])) {
+                $msg = 'AI Configuration Error: The API key for ' . ucfirst($providerName) . ' is invalid or expired.';
+                // If user is admin (implied by dashboard access usually, or just provide context), hint at .env
+                if (config('app.debug')) {
+                    $msg .= ' Please check your .env file.';
+                }
+                throw new \RuntimeException($msg);
+            }
+            throw $e;
+        }
 
         // Create the project using existing ProjectRepository
         $project = $this->projectRepository->create([
@@ -40,6 +61,10 @@ class CreateAiProject
             'pages' => $generatedContent['pages'],
             'published' => false,
         ]);
+
+        // Mark as AI-generated
+        $project->is_ai_generated = true;
+        $project->save();
 
         // Add custom CSS if generated
         if (!empty($generatedContent['css'])) {

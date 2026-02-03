@@ -17,6 +17,7 @@ class Project extends BaseModel
 
     protected $casts = [
         'published' => 'boolean',
+        'is_ai_generated' => 'boolean',
         'user_id' => 'integer',
     ];
 

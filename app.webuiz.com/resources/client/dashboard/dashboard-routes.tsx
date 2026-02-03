@@ -11,6 +11,10 @@ const AiGeneratorPage = React.lazy(
   () => import('@app/dashboard/ai-generator/ai-generator-page'),
 );
 
+const AiProjectsPage = React.lazy(
+  () => import('@app/dashboard/ai-projects/ai-projects-page'),
+);
+
 export default function DashboardRoutes() {
   const DashboardRouteConfig: RouteObject[] = [
     {
@@ -24,6 +28,14 @@ export default function DashboardRoutes() {
         {
           path: '/',
           element: <DashboardPage />,
+        },
+        {
+          path: '/ai-projects',
+          element: (
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <AiProjectsPage />
+            </React.Suspense>
+          ),
         },
         {
           path: '/domains',
@@ -52,3 +64,4 @@ export default function DashboardRoutes() {
 
   return useRoutes(DashboardRouteConfig);
 }
+

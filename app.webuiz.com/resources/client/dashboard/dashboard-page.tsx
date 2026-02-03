@@ -52,7 +52,11 @@ export function DashboardPage() {
   const { data: usage } = useAccountUsage();
   const { trans } = useTrans();
   const { user } = useAuth();
-  const query = useProjects({ userId: user!.id, paginate: 'lengthAware' });
+  const query = useProjects({
+    userId: user!.id,
+    paginate: 'lengthAware',
+    filters: { is_ai_generated: false }  // Only show non-AI projects
+  });
   const { sortDescriptor, setSortDescriptor, searchQuery, setSearchQuery } =
     query;
   const sortValue = `${sortDescriptor.orderBy}|${sortDescriptor.orderDir}`;
@@ -111,18 +115,7 @@ export function DashboardPage() {
                 ))}
               </Menu>
             </MenuTrigger>
-            <Button
-              size="sm"
-              variant="outline"
-              color="primary"
-              elementType={Link}
-              to="ai-generator"
-              className="gap-6"
-              disabled={!usage?.projects.create.allowed}
-            >
-              <span className="text-base">✨</span>
-              <Trans message="AI Generator" />
-            </Button>
+
             <Button
               size="sm"
               variant="flat"

@@ -33,6 +33,11 @@ class ProjectsController extends BaseController
             $builder->where('published', request('published'));
         }
 
+        // Filter by AI-generated status
+        if (request()->has('is_ai_generated') && request('is_ai_generated') !== null) {
+            $builder->where('is_ai_generated', request('is_ai_generated') === '1');
+        }
+
         $datasource = new Datasource($builder, request()->all(), $filters);
 
         return $this->success(['pagination' => $datasource->paginate()]);

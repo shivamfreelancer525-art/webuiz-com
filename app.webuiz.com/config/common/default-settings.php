@@ -37,6 +37,13 @@ return [
                     [
                         'type' => 'route',
                         'position' => 2,
+                        'label' => 'AI Projects',
+                        'action' => '/dashboard/ai-projects',
+                        'id' => 236,
+                    ],
+                    [
+                        'type' => 'route',
+                        'position' => 3,
                         'label' => 'Branded domains',
                         'action' => '/dashboard/domains',
                         'id' => 235,

@@ -25,7 +25,7 @@ class AccountUsageController extends BaseController
                 'images' => $this->getAiUsage('ai.images'),
             ],
             'projects' => [
-                'used' => $user->projects()->count(),
+                'used' => $user->projects()->where('is_ai_generated', false)->count(),
                 'total' => $user->getRestrictionValue(
                     'projects.create',
                     'count',
@@ -40,6 +40,7 @@ class AccountUsageController extends BaseController
                     Project::class,
                 ),
             ],
+            'ai_projects' => $this->getAiProjectUsage($user),
             'custom_domains' => [
                 'used' => $user->customDomains()->count(),
                 // Custom domains limit should match the website limit (projects.create count)
@@ -134,6 +135,30 @@ class AccountUsageController extends BaseController
 
         if ($data['total'] && $data['used'] >= $data['total']) {
             $data['failReason'] = 'overQuota';
+        }
+
+        return $data;
+    }
+
+    private function getAiProjectUsage($user): array
+    {
+        $usage = $user->getAiProjectUsage();
+        $data = [
+            'used' => $usage['used'],
+            'total' => $usage['total'],
+            'existing' => $user->aiProjects()->count(), // Total AI projects (not just this month)
+        ];
+
+        // Check if user can create more AI projects this month
+        if ($usage['total'] && $usage['used'] >= $usage['total']) {
+            $data['create'] = [
+                'allowed' => false,
+                'failReason' => 'overQuota',
+            ];
+        } else {
+            $data['create'] = [
+                'allowed' => true,
+            ];
         }
 
         return $data;
